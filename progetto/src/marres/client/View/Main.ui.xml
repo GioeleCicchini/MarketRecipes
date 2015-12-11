@@ -1,0 +1,62 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <g:HTMLPanel>
+        <style is="custom-style">
+            paper-icon-item {
+                position: relative;
+                overflow: hidden;
+            }
+            .toolbar {
+                background: #4285f4 !important;
+            }
+            .header {
+                font-size: 200%;
+                margin-left: 50px;
+            }
+            .content {
+                padding: 15px;
+            }
+            .add {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                --paper-fab-background: var(--paper-red-500);
+            }
+        </style>
+        <paper-drawer-panel ui:field="drawerPanel">
+            <div drawer="">
+                <paper-header-panel mode="seamed">
+                    <paper-toolbar class="toolbar"/>
+                    <div ui:field="categorie"></div>
+                </paper-header-panel>
+            </div>
+            <div main="">
+                <paper-header-panel mode="seamed">
+                    <paper-toolbar class="toolbar">
+                        <paper-icon-button ui:field="menu" icon="more-vert" paper-drawer-toggle=""/>
+                        <span class="header">Todo List</span>
+                    </paper-toolbar>
+                    <div ui:field="content" class="content vertical center-justified layout"/>
+                </paper-header-panel>
+                <paper-fab ui:field="addButton" icon="add" title="add" class="add"/>
+            </div>
+        </paper-drawer-panel>
+        <paper-dialog ui:field="addItemDialog"
+                entry-animation="fade-in-animation"
+                class="dialog" modal="">
+    <h2>Add Item</h2>
+    <paper-input ui:field="titleInput" label="Title" required=""
+                 auto-validate="" error-message="required input!"/>
+    <div class="textarea-container iron-autogrow-textarea">
+        <paper-textarea ui:field="descriptionInput" label="Notes"/>
+    </div>
+    <div class="buttons">
+        <paper-button dialog-dismiss="">Cancel</paper-button>
+        <paper-button ui:field="confirmAddButton"
+                      dialog-confirm="">OK</paper-button>
+    </div>
+  </paper-dialog>
+    </g:HTMLPanel>
+</ui:UiBinder>
