@@ -4,16 +4,23 @@ import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Composite;
 
+import marres.client.Presenter.CategoriaItemPresenter;
 
-public class CategoriaItem {
+import marres.client.Presenter.Presenter;
 
+public class CategoriaItem extends Composite implements CategoriaItemPresenter.Display {
+
+	Presenter presenter;
+	
   private final DivElement element;
 
-  interface CategoriaItemUiBinder extends UiBinder<DivElement, CategoriaItem> {
+  
+  interface CategoriaItemUiBinder extends UiBinder<DivElement, CategoriaItem>  {
   }
 
-  @UiField Element ciao;
+  @UiField Element Categoria;
   private static CategoriaItemUiBinder ourUiBinder = GWT.create(CategoriaItemUiBinder.class);
 
 
@@ -21,21 +28,51 @@ public class CategoriaItem {
     element = ourUiBinder.createAndBindUi(this);
   }
 
-
-	  
-  public Element getCiao() {
-	return ciao;
-}
-
-
-
-public void setCiao(Element ciao) {
-	this.ciao = ciao;
-}
-
-
-
-public DivElement getElement() {
-    return element;
+  
+  @Override
+  public void setCategoria(String categoria) {
+  Categoria.setInnerText(categoria);
   }
+
+
+@Override
+public void AggiungiCategoria(DivElement categoria) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+@Override
+public void clear() {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+@Override
+public void setPresenter(CategoriaItemPresenter presenter) {
+	this.presenter= presenter;
+	
+}
+
+
+@Override
+public DivElement getDivElement() {
+	return this.element;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

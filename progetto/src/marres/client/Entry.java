@@ -1,6 +1,8 @@
 package marres.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.vaadin.polymer.Polymer;
 import com.vaadin.polymer.elemental.Function;
@@ -22,6 +24,7 @@ public class Entry implements EntryPoint {
 	                PaperIconItemElement.SRC,
 	                PaperRippleElement.SRC,
 	                IronIconElement.SRC,
+	                IronImageElement.SRC,
 	                PaperDrawerPanelElement.SRC,
 	                PaperHeaderPanelElement.SRC,
 	                PaperToolbarElement.SRC,
@@ -30,10 +33,10 @@ public class Entry implements EntryPoint {
 	                PaperTextareaElement.SRC,
 	                PaperInputElement.SRC,
 	                PaperButtonElement.SRC,
-	                PaperCheckboxElement.SRC
-	                    
-               
-                
+	                PaperCheckboxElement.SRC,
+	                PaperCardElement.SRC,
+	                PaperIconButtonElement.SRC
+
         ), new Function() {
             public Object call(Object arg) {
                 startApplication();
@@ -45,21 +48,9 @@ public class Entry implements EntryPoint {
 
 	  private void startApplication() {
 	    
-		AppController controller = new AppController();
-		//  RootPanel.get().add(new Main());
-		  
-		  
-	
-		
-		
-		
-
-		
-		
-		/*
-		Presenter presenterRicSpace = new RicettaSpacePresenter(view2);
-		presenterRicSpace.go(RootPanel.get());
-		*/
+		EventBus eventBus = new SimpleEventBus();
+		AppController controller = new AppController(eventBus);
+		controller.go(RootPanel.get());
 	  }
 }
 

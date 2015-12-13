@@ -1,9 +1,7 @@
-package marres.client.Events;
+package marres.client.Events.EventUp;
 
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.shared.EventHandler;
 
-import marres.shared.DRicetta;
 
 public interface AggiungiRicettaEventHandler extends EventHandler {
 

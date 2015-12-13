@@ -6,6 +6,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.vaadin.polymer.paper.element.PaperCardElement;
 import com.vaadin.polymer.paper.element.PaperCheckboxElement;
 
 import marres.client.Presenter.RicettaPresenter;
@@ -14,10 +15,8 @@ import marres.client.Presenter.RicettaPresenter;
 public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	RicettaPresenter presenter;
-	  @UiField Element titolo;
-	  @UiField Element descrizione;
-	  @UiField PaperCheckboxElement done;
-	
+	  @UiField PaperCardElement titolo;
+	  
 	
 
 	 private final DivElement element;
@@ -30,10 +29,6 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 	public DivElement getDivElement() {
 		return element;
 	}
-
-
-
-
 
 	public VRicetta() {
 		element = uiBinder.createAndBindUi(this);
@@ -48,27 +43,16 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		this.presenter= RicettaPresenter;
 		
 	}
+	
 	public String getTitolo() {
-		return titolo.getInnerText();
+		return titolo.getHeading();
 	}
-
-
 
 	public void setTitolo(String titolo) {
-		this.titolo.setInnerText(titolo);
+		this.titolo.setHeading(titolo);
+		
 	}
 
-
-
-	public String getDescrizione() {
-		return descrizione.getInnerText();
-	}
-
-
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione.setInnerText(descrizione);
-	}
 
 
 
@@ -76,8 +60,8 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	@Override
 	public void setRicetta(String titolo, String descrizione) {
-		this.titolo.setInnerText(titolo);
-		this.descrizione.setInnerText(descrizione);
+		this.titolo.setHeading(titolo);
+		
 		
 	}
 	

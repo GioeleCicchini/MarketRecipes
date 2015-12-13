@@ -21,55 +21,16 @@ public class Main extends Composite implements Display {
   private static MainUiBinder ourUiBinder = GWT.create(MainUiBinder.class);
 
   @UiField PaperDrawerPanelElement drawerPanel;
-
-
-  @UiField HTMLElement content;
+  @UiField HTMLElement ContenutiPrincipali;
   @UiField HTMLElement categorie;
-  @UiField PaperFabElement addButton;
+  @UiField PaperFabElement ApriCarrello;
+  @UiField PaperDialogElement Carrello;
 
-  @UiField PaperDialogElement addItemDialog;
-  @UiField PaperInputElement titleInput;
-  @UiField PaperTextareaElement descriptionInput;
-  @UiField PaperButtonElement confirmAddButton;
 
- 
-
-  // costruttore con inizializzazione eventi 
   public Main() {
     initWidget(ourUiBinder.createAndBindUi(this));
-
-    addButton.addEventListener("click", new EventListener() {
-      public void handleEvent(Event event) {
-    	  if(presenter != null){
-    	  presenter.OpenItemDialog();
-    	  }
-      }
-    });
-
-   
-    confirmAddButton.addEventListener("click", new EventListener() {
-      public void handleEvent(Event event) {
-        if (!titleInput.getValue().isEmpty()) {
-        	//presenter.OnAddButtonClick(titleInput.getValue(),descriptionInput.getValue());
-        }
-      }
-    });
-
   }
   
-  @Override
- public void OpenItemDialog(){
-	  addItemDialog.open();
-  }
-  
-
-
-@Override
-public void clear() {
-    titleInput.setValue("");
-    descriptionInput.setValue("");
-}
-
 @Override
 public void setPresenter(MainPresenter presenter) {
  this.presenter = presenter;
@@ -78,8 +39,25 @@ public void setPresenter(MainPresenter presenter) {
 
 @Override
 public void AggiungiRicetta(DivElement ricetta) {
-	    content.appendChild(ricetta);
+	ContenutiPrincipali.appendChild(ricetta);
 }
+
+@Override
+public void AggiungiCategoria(DivElement categoria) {
+	categorie.appendChild(categoria);
+}
+
+@Override
+public PaperFabElement getApriCarrello() {
+	return ApriCarrello;
+}
+@Override
+public void ApriCarrello(){
+	Carrello.open();
+}
+
+
+
 
 
 

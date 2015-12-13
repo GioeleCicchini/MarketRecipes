@@ -1,7 +1,8 @@
-package marres.client.Events;
+package marres.client.Events.EventUp;
 
 import com.google.gwt.event.shared.GwtEvent;
-import marres.client.Events.AggiungiRicettaEventHandler;
+
+import marres.client.Events.EventUp.AggiungiRicettaEventHandler;
 import marres.shared.DRicetta;
 
 public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
@@ -17,7 +18,6 @@ public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
 
 	@Override
 	public Type<AggiungiRicettaEventHandler> getAssociatedType() {
-		// TODO Auto-generated method stub
 		return TYPE;
 	}
 
@@ -28,7 +28,7 @@ public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
 	}
 	
 	public DRicetta getRicetta() {
-		return ricetta;
+		return this.ricetta;
 	}
 
 

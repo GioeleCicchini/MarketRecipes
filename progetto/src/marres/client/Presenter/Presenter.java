@@ -6,6 +6,5 @@ import com.google.gwt.user.client.ui.Panel;
 public interface Presenter {
 	public DivElement getDivElement();
 	public void bind();
-	public void go(Panel panel);
-
+	public void InizializzaEventiView();
 }

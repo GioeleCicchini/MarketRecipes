@@ -2,28 +2,80 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
                  xmlns:g='urn:import:com.google.gwt.user.client.ui'
                  xmlns:p='urn:import:com.vaadin.polymer.paper.widget'>
-
-      <div class="item vertical center-justified layout">
-        <style>
+	<div class="ricetta">
+        <style is='custom-style'>
+        	
+          .titoloSpace{
+          	width:350px;
+          	background-color:#BDBDBD;
+          	padding-top:5px;
+          	padding-bottom:5px;
+          }
+        
           .titolo {
-            padding-left: 20px;
-            font-size: 150%;
-            font-weight: normal;
+          	font-size:20px;
+          	padding-left:10px;
+          	text-align:center;
+            
           }
-          .done {
-            text-decoration: line-through;
+          .ricetta{
+          font-family: Roboto;
+          float: left;
+          margin-top: 20px;
+          margin-left:20px;
+          width:350px;
           }
-          .paper-checkbox {
-            top: -2px;
+          .papercard{
+          width:100%;
           }
+          .tg  {
+          width:100%;
+          font-size:20px;
+          }
+			.tg td{
+			vertical-align:top;
+			padding:3px 8px;
+			width:30%;
+			
+		}
+		.image{
+		width:100%;
+		height:100px;
+		}
+		.riepilogo{
+		font-size:15px;
+		text-align:right;
+		}
+		
         </style>
-        <div class="vertical-section">
-          <h4>
-            <paper-checkbox ui:field="done"/>
-            <span ui:field="titolo" class='titolo'>Go to Google</span>
-   			<paper-button>cioa come va </paper-button>
-          </h4>
-          <div ui:field="descrizione"/>
-        </div>
+          
+		        <paper-card class= "papercard" heading="Card Title" ui:field="titolo">
+				            
+				           
+				            
+				            <iron-image sizing="cover" src="http://images.lifesambrosia.com/food/1200/risotto-milanese.jpg" class="image"></iron-image>
+				            
+										<table class="tg">
+										  <tr>
+										    <td class="tg-yw4l">Difficoltà</td>
+										    <td class="riepilogo">Media</td>
+										  </tr>
+										  <tr>
+										    <td class="tg-yw4l">Preparazione</td>
+										    <td class="riepilogo">50 minuti</td>
+										  </tr>
+										  <tr>
+										  <td class="tg-yw4l">Cottura</td>
+										    <td class="riepilogo">1:30 h</td>
+										  </tr>
+										  <tr>
+										    <td class="tg-yw4l">Dosi Per</td>
+										     <td class="riepilogo">5 Persone</td>
+										  </tr>
+										</table>
+				   			
+				   			<paper-ripple/>
+				</paper-card>
+          
       </div>
     </ui:UiBinder>

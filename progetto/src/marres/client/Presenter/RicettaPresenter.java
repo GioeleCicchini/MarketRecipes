@@ -8,6 +8,7 @@ public class RicettaPresenter implements Presenter {
 
 	Display view;
 	
+	
 	public interface Display {
 		public DivElement getDivElement();
 		public void setPresenter(RicettaPresenter RicettaPresenter);
@@ -18,6 +19,12 @@ public class RicettaPresenter implements Presenter {
 	public RicettaPresenter(Display view){
 		this.view = view;
 		bind();
+	}
+	
+	@Override
+	public void InizializzaEventiView() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	@Override
@@ -32,14 +39,11 @@ public class RicettaPresenter implements Presenter {
 	}
 
 	@Override
-	public void go(Panel panel) {
-		panel.add(view.asWidget());
-	}
-
-	@Override
 	public DivElement getDivElement() {
 		return view.getDivElement();
 	}
+
+	
 	
 	
 

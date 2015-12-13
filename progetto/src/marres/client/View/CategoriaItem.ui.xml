@@ -3,6 +3,10 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	 xmlns:p='urn:import:com.vaadin.polymer.paper.widget'>
 
-		<div ui:field="ciao">ciao</div>
-	
+		<div>
+				<paper-icon-item>
+                        <div ui:field="Categoria"></div>
+                        <paper-ripple/>
+                </paper-icon-item>
+         </div>       
 </ui:UiBinder> 
