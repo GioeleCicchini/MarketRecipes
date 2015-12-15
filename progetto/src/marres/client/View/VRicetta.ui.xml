@@ -5,19 +5,6 @@
 	<div class="ricetta">
         <style is='custom-style'>
         	
-          .titoloSpace{
-          	width:350px;
-          	background-color:#BDBDBD;
-          	padding-top:5px;
-          	padding-bottom:5px;
-          }
-        
-          .titolo {
-          	font-size:20px;
-          	padding-left:10px;
-          	text-align:center;
-            
-          }
           .ricetta{
           font-family: Roboto;
           float: left;
@@ -31,47 +18,84 @@
           .tg  {
           width:100%;
           font-size:20px;
+          margin-top:-45px;
           }
 			.tg td{
 			vertical-align:top;
-			padding:3px 8px;
+			padding:3px 12px;
 			width:30%;
 			
 		}
 		.image{
 		width:100%;
-		height:100px;
+		height:200px;
 		}
 		.riepilogo{
 		font-size:15px;
 		text-align:right;
 		}
+		.Costo{
+		font-size:30px;
+		margin-top:0px;
+		}
+		.prezzo{
+		font-size:30px;
+
+		}
 		
+		.cardtitlespace{
+		width:100%;
+		height:50px;
+		position: relative;
+		top:-55px;
+		background-color:black;
+		color:white;
+		opacity:0.6;
+		font-size:30px;
+		}
+		.cardtitle{
+		padding:8px;
+		padding-left:12px;
+		}
+		.PrezzoFinale{
+				margin-top:0px;
+		}
+
         </style>
-          
-		        <paper-card class= "papercard" heading="Card Title" ui:field="titolo">
-				            
+		        <paper-card class="papercard" image="">          
 				            <iron-image sizing="cover" src="http://images.lifesambrosia.com/food/1200/risotto-milanese.jpg" class="image"></iron-image>
 				            
+				            <div class="cardtitlespace">
+				            	<div class="cardtitle" ui:field="titolo">Card Title</div>
+				            </div>
 										<table class="tg">
 										  <tr>
-										    <td class="tg-yw4l">Difficoltà</td>
+										    <td>Difficoltà</td>
 										    <td class="riepilogo">Media</td>
 										  </tr>
+										  
 										  <tr>
-										    <td class="tg-yw4l">Preparazione</td>
+										    <td>Preparazione</td>
 										    <td class="riepilogo">50 minuti</td>
 										  </tr>
 										  <tr>
-										  <td class="tg-yw4l">Cottura</td>
+										  <td>Cottura</td>
 										    <td class="riepilogo">1:30 h</td>
 										  </tr>
 										  <tr>
-										    <td class="tg-yw4l">Dosi Per</td>
+										    <td>Dosi Per</td>
 										     <td class="riepilogo">5 Persone</td>
 										  </tr>
 										</table>
-				   			
+				   			<hr></hr>
+				   							<table class="tg PrezzoFinale">
+										 		 <tr>
+										 			 <td class="Costo">Costo</td>
+										 			 <td class="riepilogo prezzo" >2€</td>
+										 		 </tr>
+				   							
+				   							</table>
+				   							
 				   			<paper-ripple/>
 				</paper-card>
           

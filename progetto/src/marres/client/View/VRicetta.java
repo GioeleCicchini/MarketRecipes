@@ -15,7 +15,7 @@ import marres.client.Presenter.RicettaPresenter;
 public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	RicettaPresenter presenter;
-	  @UiField PaperCardElement titolo;
+	  @UiField Element titolo;
 	  
 	
 
@@ -34,10 +34,6 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		element = uiBinder.createAndBindUi(this);
 	}
 
-
-
-
-
 	@Override
 	public void setPresenter(RicettaPresenter RicettaPresenter) {
 		this.presenter= RicettaPresenter;
@@ -45,17 +41,17 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 	}
 	
 	public String getTitolo() {
-		return titolo.getHeading();
+		return titolo.getInnerText();
 	}
 
 	public void setTitolo(String titolo) {
-		this.titolo.setHeading(titolo);
+		this.titolo.setInnerText(titolo);
 		
 	}
 
 	@Override
 	public void setRicetta(String titolo, String descrizione) {
-		this.titolo.setHeading(titolo);
+		this.titolo.setInnerText(titolo);
 		
 		
 	}
