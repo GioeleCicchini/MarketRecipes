@@ -1,14 +1,25 @@
 package marres.client.Presenter;
 
+
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+import com.vaadin.polymer.elemental.Element;
+import com.vaadin.polymer.elemental.Event;
+import com.vaadin.polymer.elemental.EventListener;
+
+import marres.client.AppUtils;
+import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
+import marres.client.Events.EventUp.AggiungiRicettaEvent;
+import marres.shared.DCategoria;
+
 
 
 public class CategoriaItemPresenter implements Presenter {
 
 	
-	Display view;
+	
+	private Display view;
+	private DCategoria Categoria;
 	
 	public interface Display {
 		public DivElement getDivElement();
@@ -17,23 +28,34 @@ public class CategoriaItemPresenter implements Presenter {
 		public Widget asWidget();
 		public void setPresenter(CategoriaItemPresenter presenter);
 		public void setCategoria(String categoria);
-		
+		public Element getCategoriaButton();
 	}
 	
 	public CategoriaItemPresenter(Display view){
 		this.view = view;
 		bind();
+		InizializzaEventiView();
 	}
 	
 	@Override
 	public void InizializzaEventiView() {
-		// TODO Auto-generated method stub
+		
+		final Element CategoriaButton = this.view.getCategoriaButton();
+		CategoriaButton.addEventListener("click", new EventListener(){
+			@Override
+			public void handleEvent(Event event) {
+				
+				AppUtils.EVENT_BUS.fireEvent(new CambiaCategoriaEvent(Categoria));
+				
+			}
+		});
 		
 	}
 	
-	public void setCategoria(String categoria){
-		view.setCategoria(categoria);
-		
+	
+	public void setCategoria(DCategoria categoria){
+		view.setCategoria(categoria.getNome());
+		this.Categoria= categoria;
 	}
 	
 	@Override

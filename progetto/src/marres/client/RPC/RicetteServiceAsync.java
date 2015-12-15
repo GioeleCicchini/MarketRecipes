@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import marres.shared.DCategoria;
 import marres.shared.DRicetta;
 
 public interface RicetteServiceAsync {
-	void getRicette(ArrayList<DRicetta> ricette, AsyncCallback<DRicetta[]> callback);
+	void getRicette(DCategoria categoria, AsyncCallback<DRicetta[]> callback);
 
 }

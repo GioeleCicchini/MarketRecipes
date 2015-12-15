@@ -26,7 +26,8 @@
             <div drawer="">
                 <paper-header-panel mode="seamed">
                     <paper-toolbar class="toolbar"><div>Categorie</div></paper-toolbar>
-                    <div ui:field="categorie">  
+                    <div ui:field="categorie"> 
+                    <div id="categorie"></div> 
                     </div>
                 </paper-header-panel>
             </div>
@@ -36,7 +37,9 @@
                         <paper-icon-button ui:field="menu" icon="more-vert" paper-drawer-toggle=""/>
                         <span class="header">MarketRecipes</span>
                     </paper-toolbar>
-                    <div ui:field="ContenutiPrincipali" class="content"/>
+                    <div ui:field="ContenutiPrincipali" class="contenutiPrincipali">
+         
+                    </div>
                 </paper-header-panel>
                 <paper-fab ui:field="ApriCarrello" icon="shopping-cart" title="Carrello" class="add"/>
             </div>

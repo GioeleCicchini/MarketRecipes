@@ -51,8 +51,6 @@
           
 		        <paper-card class= "papercard" heading="Card Title" ui:field="titolo">
 				            
-				           
-				            
 				            <iron-image sizing="cover" src="http://images.lifesambrosia.com/food/1200/risotto-milanese.jpg" class="image"></iron-image>
 				            
 										<table class="tg">

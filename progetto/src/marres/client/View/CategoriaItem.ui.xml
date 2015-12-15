@@ -4,7 +4,7 @@
 	 xmlns:p='urn:import:com.vaadin.polymer.paper.widget'>
 
 		<div>
-				<paper-icon-item>
+				<paper-icon-item ui:field="CategoriaButton" tipo="">
                         <div ui:field="Categoria"></div>
                         <paper-ripple/>
                 </paper-icon-item>

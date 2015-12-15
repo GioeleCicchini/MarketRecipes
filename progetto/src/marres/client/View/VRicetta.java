@@ -53,11 +53,6 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		
 	}
 
-
-
-
-
-
 	@Override
 	public void setRicetta(String titolo, String descrizione) {
 		this.titolo.setHeading(titolo);

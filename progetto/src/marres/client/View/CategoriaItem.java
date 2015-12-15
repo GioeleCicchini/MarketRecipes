@@ -1,10 +1,11 @@
 package marres.client.View;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Element;
+
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.vaadin.polymer.elemental.Element;
 
 import marres.client.Presenter.CategoriaItemPresenter;
 
@@ -20,7 +21,9 @@ public class CategoriaItem extends Composite implements CategoriaItemPresenter.D
   interface CategoriaItemUiBinder extends UiBinder<DivElement, CategoriaItem>  {
   }
 
-  @UiField Element Categoria;
+  @UiField DivElement Categoria;
+  @UiField Element CategoriaButton;
+  
   private static CategoriaItemUiBinder ourUiBinder = GWT.create(CategoriaItemUiBinder.class);
 
 
@@ -32,6 +35,7 @@ public class CategoriaItem extends Composite implements CategoriaItemPresenter.D
   @Override
   public void setCategoria(String categoria) {
   Categoria.setInnerText(categoria);
+  CategoriaButton.setAttribute("tipo", categoria);
   }
 
 
@@ -50,7 +54,6 @@ public void clear() {
 }
 
 
-
 @Override
 public void setPresenter(CategoriaItemPresenter presenter) {
 	this.presenter= presenter;
@@ -61,6 +64,12 @@ public void setPresenter(CategoriaItemPresenter presenter) {
 @Override
 public DivElement getDivElement() {
 	return this.element;
+}
+
+
+@Override
+public Element getCategoriaButton() {
+	return this.CategoriaButton;
 }
 
 

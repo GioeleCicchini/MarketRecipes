@@ -1,11 +1,14 @@
 package marres.client.RPC;
 
+import java.util.ArrayList;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import marres.shared.DCategoria;
+import marres.shared.DRicetta;
 
 public interface CategorieServiceAsync {
 
-	void getCategorie(String[] symbols, AsyncCallback<DCategoria[]> callback);
+	void getCategorie(ArrayList<DCategoria>  symbols, AsyncCallback<DCategoria[]> callback);
 
 }

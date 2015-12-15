@@ -1,9 +1,8 @@
 package marres.client;
 
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Panel;
-
 import marres.client.Events.EventDown.DisplayCategoriaEvent;
 import marres.client.Events.EventDown.DisplayRicettaEvent;
 import marres.client.Events.EventUp.AggiungiCategoriaEvent;
@@ -24,45 +23,45 @@ public class AppController {
 
 
 	
-	 private EventBus eventbus;
-	
 	 
-	public AppController(EventBus eventbus){
-		this.eventbus = eventbus;
+	public AppController(){
 	}
 	public void go(Panel panel){
 	// inizializzazione Applicazione	
 		 Main main = new Main();
-		 MainPresenter mainpresenter = new MainPresenter(main,this.eventbus);
+		 MainPresenter mainpresenter = new MainPresenter(main);
 		 RegistraEventi();
 		 mainpresenter.go(panel);
 	}
 	
 	
 	public void RegistraEventi(){
-		this.eventbus.addHandler(AggiungiRicettaEvent.TYPE, new AggiungiRicettaEventHandler(){
+		
+		AppUtils.EVENT_BUS.addHandler(AggiungiRicettaEvent.TYPE, new AggiungiRicettaEventHandler(){
 			@Override
 			public void OnAggiungiRicetta(AggiungiRicettaEvent event) {
-				DRicetta Dricetta = event.getRicetta();
+				
+				DRicetta Ricetta = event.getRicetta();
 				VRicetta Vricetta = new VRicetta();
 				RicettaPresenter ricettapresenter = new RicettaPresenter(Vricetta);
-				ricettapresenter.setRicetta(Dricetta.getTitolo(), Dricetta.getDescrizione());
+				
+				ricettapresenter.setRicetta(Ricetta);
 				DivElement ricettaDiv= Vricetta.getDivElement();		
-				eventbus.fireEvent(new DisplayRicettaEvent(ricettaDiv));
+				AppUtils.EVENT_BUS.fireEvent(new DisplayRicettaEvent(ricettaDiv));
 				
 			}
 		});
 		
-		this.eventbus.addHandler(AggiungiCategoriaEvent.TYPE, new AggiungiCategoriaEventHandler(){
+		AppUtils.EVENT_BUS.addHandler(AggiungiCategoriaEvent.TYPE, new AggiungiCategoriaEventHandler(){
 			
 			@Override
 			public void OnAggiungiCategoria(AggiungiCategoriaEvent event) {
-				DCategoria Dcategoria = event.getCategoria();
+				DCategoria Categoria = event.getCategoria();
 				CategoriaItem Vcategoria = new CategoriaItem();
 				CategoriaItemPresenter categoriapresenter = new CategoriaItemPresenter(Vcategoria);
-				categoriapresenter.setCategoria(Dcategoria.getNome());
+				categoriapresenter.setCategoria(Categoria);
 				DivElement categoriaDiv = Vcategoria.getDivElement();
-				eventbus.fireEvent(new DisplayCategoriaEvent(categoriaDiv));
+				AppUtils.EVENT_BUS.fireEvent(new DisplayCategoriaEvent(categoriaDiv));
 			}
 		});
 		

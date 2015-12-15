@@ -3,6 +3,9 @@ package marres.server;
 
 import marres.client.RPC.CategorieService;
 import marres.shared.DCategoria;
+import marres.shared.DRicetta;
+
+import java.util.ArrayList;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -10,7 +13,7 @@ public class CategorieServiceImpl extends RemoteServiceServlet implements Catego
 
 
 	@Override
-	public DCategoria[] getCategorie(String[] symbols) {
+	public DCategoria[] getCategorie(ArrayList<DCategoria> symbols) {
 		
 		DCategoria categoria1 = new DCategoria("Primi");
 		DCategoria categoria2 = new DCategoria("Secondi");

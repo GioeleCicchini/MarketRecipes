@@ -1,13 +1,16 @@
 package marres.client.Presenter;
 
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+
+import marres.shared.DRicetta;
 
 public class RicettaPresenter implements Presenter {
 
 	Display view;
-	
+	DRicetta Ricetta ;
 	
 	public interface Display {
 		public DivElement getDivElement();
@@ -33,8 +36,10 @@ public class RicettaPresenter implements Presenter {
 
 	}
 	
-	public void setRicetta(String titolo, String descrizione){
-		view.setRicetta(titolo, descrizione);
+	public void setRicetta(DRicetta ricetta){
+		this.Ricetta = ricetta;
+	
+		view.setRicetta(ricetta.getTitolo(), ricetta.getDescrizione());
 		
 	}
 

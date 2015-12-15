@@ -8,6 +8,14 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.paper.element.*;
 
+
+import com.google.gwt.query.client.GQuery;
+import com.google.gwt.query.client.Function;
+import com.google.gwt.query.client.Selector;
+import com.google.gwt.query.client.Selectors;
+import static com.google.gwt.query.client.GQuery.*;
+import static com.google.gwt.query.client.css.CSS.*;
+
 import marres.client.Presenter.MainPresenter;
 import marres.client.Presenter.MainPresenter.Display;
 
@@ -38,13 +46,25 @@ public void setPresenter(MainPresenter presenter) {
 }
 
 @Override
-public void AggiungiRicetta(DivElement ricetta) {
+public void AggiungiContenutiPrincipali(DivElement ricetta) {
 	ContenutiPrincipali.appendChild(ricetta);
 }
 
 @Override
-public void AggiungiCategoria(DivElement categoria) {
+public void AggiungiContenutiMenu(DivElement categoria) {
 	categorie.appendChild(categoria);
+	
+}
+
+@Override
+public void EliminaContenutiPrincipali() {
+	ContenutiPrincipali.setInnerHTML("");
+	
+}
+
+@Override
+public void EliminaContenutiMenu() {
+	categorie.setInnerHTML("");
 }
 
 @Override
@@ -55,6 +75,7 @@ public PaperFabElement getApriCarrello() {
 public void ApriCarrello(){
 	Carrello.open();
 }
+
 
 
 
