@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="marres.shared.DRicetta" table="Ricetta">
+		<id name="id">
+			<column name="Ricetta_Id" />
+			<generator class="identity" />
+		</id>
+	 	<property name="nome">
+            <column name="Nome"/>
+        </property>
+        
+        <property name="difficolta">
+            <column name="Difficolta"/>
+        </property>
+        
+          <property name="preparazione">
+            <column name="Preparazione"/>
+        </property>
+        
+          <property name="cottura">
+            <column name="Cottura"/>
+        </property>
+        
+          <property name="dosi">
+            <column name="Dosi"/>
+        </property>
+        
+        <!--  Questo campo una volta creato il database la prima volta va modificato dal database da tiny-bloob a medium-blob  -->
+        <property name="image" type="binary">
+            <column name="Image" />
+        </property>
+        
+        <many-to-one name="categoria" class="marres.shared.DCategoria" fetch="select">
+        	<column name="CategoriaId" not-null="true"></column>
+        </many-to-one>
+        
+        <list name="ingredienti">
+			<key>
+                <column name="Ricetta_Id" not-null="true" />
+            </key>
+            <list-index column="idx" base="0" />
+            <many-to-many entity-name="marres.shared.DIngrediente" fetch="select">
+                <column name="Ingredienti_id" not-null="true" />
+            </many-to-many>
+		</list>
+		
+		
+		
+		
+	</class>
+</hibernate-mapping>

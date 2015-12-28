@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="marres.shared.DCarrello" table="Carrello" >
+		<id name="id" >
+			<column name="Carrello_Id" />
+			<generator class="identity" />
+		</id>
+		<property name="nome" column="Nome"/>
+		
+		<list name="ricette" cascade="all">
+			<key>
+                <column name="Carrello_Id" not-null="true" />
+            </key>
+            <list-index column="idIndex" base="0" />
+            <many-to-many entity-name="marres.shared.DRicetta" fetch="select">
+                <column name="Ricetta_Id" not-null="true"  />
+            </many-to-many>
+		</list>
+		
+	
+	
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="marres.shared.DCategoria" table="Categoria" >
+		<id name="id">
+			<column name="CategoriaId" />
+			<generator class="identity"></generator>
+		</id>
+		<property name="nome">
+		 <column name="Nome"></column>
+		</property>
+		
+		<list name="ricetta" cascade="all">
+			<key>
+				<column name="CategoriaId" not-null="true" ></column>
+			</key>
+		<list-index column="idx" base="0" />
+		<one-to-many class="marres.shared.DRicetta"></one-to-many>
+		</list>
+		
+	</class>
+	
+</hibernate-mapping>

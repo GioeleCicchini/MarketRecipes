@@ -7,15 +7,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.vaadin.polymer.elemental.*;
 import com.vaadin.polymer.paper.element.*;
-
-
-import com.google.gwt.query.client.GQuery;
-import com.google.gwt.query.client.Function;
-import com.google.gwt.query.client.Selector;
-import com.google.gwt.query.client.Selectors;
-import static com.google.gwt.query.client.GQuery.*;
-import static com.google.gwt.query.client.css.CSS.*;
-
 import marres.client.Presenter.MainPresenter;
 import marres.client.Presenter.MainPresenter.Display;
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="marres.shared.DCliente" table="Clienti" >
+		<id name="id" >
+			<column name="Cliente_Id" />
+			<generator class="identity" />
+		</id>
+
+		  <list name="OrdiniEffettuati" table="Ordini" 
+				inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="Cliente_ID" not-null="true" />
+            </key>
+             <list-index column="idIndex" base="0" />
+            <one-to-many class="marres.shared.DOrdine" />
+        </list>
+        
+         <list name="pianificazione" table="GiorniPianificazioneRicette" 
+				inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="Cliente_ID" not-null="true" />
+            </key>
+             <list-index column="idIndex" base="0" />
+            <one-to-many class="marres.shared.DGiornoPianificazioneRicette" />
+        </list>
+	
+	<property name="nome">
+		<column name="Nome"/>
+	</property>
+	
+	<property name="cognome">
+		<column name="Cognome"/>
+	</property>
+	
+	<property name="codiceFiscale">
+		<column name="CodiceFiscale"/>
+	</property>
+	
+
+	
+	</class>
+</hibernate-mapping>

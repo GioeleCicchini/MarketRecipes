@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="marres.shared.DNegozio" table="Negozi" >
+		<id name="id" >
+			<column name="Negozio_Id" />
+			<generator class="identity" />
+		</id>
+		
+	<list name="ordini" table="Ordini" 
+				inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="Negozio_ID" not-null="true" />
+            </key>
+             <list-index column="idIndex" base="0" />
+            <one-to-many class="marres.shared.DOrdine" />
+        </list>
+	<property name="marchio">
+		<column name="Marchio"></column>
+	</property>
+	
+	<property name="partitaIva">
+		<column name="PartitaIva"></column>
+	</property>
+	
+	<one-to-one name="indirizzo" class="marres.shared.DIndirizzo"></one-to-one>
+	
+	
+	
+	</class>
+</hibernate-mapping>

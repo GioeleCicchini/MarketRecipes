@@ -15,8 +15,11 @@ public class CategorieServiceImpl extends RemoteServiceServlet implements Catego
 	@Override
 	public DCategoria[] getCategorie(ArrayList<DCategoria> symbols) {
 		
-		DCategoria categoria1 = new DCategoria("Primi");
-		DCategoria categoria2 = new DCategoria("Secondi");
+		DCategoria categoria1 = new DCategoria();
+		categoria1.setNome("Primi");
+		
+		DCategoria categoria2 = new DCategoria();
+		categoria2.setNome("Secondi");
 	
 		DCategoria[] lista = new DCategoria[2];
 		lista[0]= categoria1;

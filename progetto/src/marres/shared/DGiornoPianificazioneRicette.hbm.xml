@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="marres.shared.DGiornoPianificazioneRicette" table="GiorniPianificazineRicette">
+		<id name="id">
+			<column name="GiornoPianificazioneRicette_Id" />
+			<generator class="identity" />
+		</id>
+	 	
+	 	
+	 	<many-to-one name="cliente" class="marres.shared.DCliente" fetch="select" cascade="all">
+            <column name="Cliente_ID" not-null="true" />
+        </many-to-one>	
+        
+        <list name="ricette" cascade="all">
+			<key>
+                <column name="GiornoPianificazioneRicette_Id" not-null="true" />
+            </key>
+            <list-index column="idx" base="0" />
+            <many-to-many entity-name="marres.shared.DRicetta">
+                <column name="Ricetta_id" not-null="true" />
+            </many-to-many>
+		</list>
+		
+		<property name="dataConsegna">
+			<column name="DataConsegna"></column>
+		</property>
+		
+		
+		
+		
+	</class>
+</hibernate-mapping>

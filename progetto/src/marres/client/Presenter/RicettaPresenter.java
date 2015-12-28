@@ -39,7 +39,7 @@ public class RicettaPresenter implements Presenter {
 	public void setRicetta(DRicetta ricetta){
 		this.Ricetta = ricetta;
 	
-		view.setRicetta(ricetta.getTitolo(), ricetta.getDescrizione());
+		view.setRicetta(ricetta.getNome(), ricetta.getCottura());
 		
 	}
 

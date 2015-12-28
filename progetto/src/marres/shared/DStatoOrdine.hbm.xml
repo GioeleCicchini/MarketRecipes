@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="marres.shared.DStatoOrdine" table="StatoOrdini" >
+		<id name="id" >
+			<column name="StatoOrdine_Id" />
+			<generator class="identity" />
+		</id>
+	<one-to-one name="ordine" class="marres.shared.DOrdine" cascade="all"></one-to-one>
+		
+		
+		
+	
+	
+	</class>
+</hibernate-mapping>

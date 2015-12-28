@@ -2,6 +2,7 @@ package marres.client.Presenter;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
@@ -52,7 +53,8 @@ public class MainPresenter implements Presenter {
 	
 	public MainPresenter(Display view){
 		this.view = view;
-		Categoria = new DCategoria("Primi");
+		Categoria = new DCategoria();
+		Categoria.setNome("Primi");
 		bind();
 		InizializzaEventiView();
 		

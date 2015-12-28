@@ -1,7 +1,9 @@
 package marres.client;
 
+
+
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.user.client.Window;
+
 import com.google.gwt.user.client.ui.Panel;
 import marres.client.Events.EventDown.DisplayCategoriaEvent;
 import marres.client.Events.EventDown.DisplayRicettaEvent;
@@ -25,6 +27,11 @@ public class AppController {
 	
 	 
 	public AppController(){
+		
+
+
+	//	Session session = HibernateUtil.getSessionFactory().openSession();
+		
 	}
 	public void go(Panel panel){
 	// inizializzazione Applicazione	
