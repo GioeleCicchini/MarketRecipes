@@ -8,7 +8,7 @@
 		</id>
 	 	
 	 	
-	 	<many-to-one name="cliente" class="marres.shared.domain.DCliente" fetch="select" cascade="all">
+	 	<many-to-one name="cliente" class="marres.shared.domain.DCliente"  cascade="all">
             <column name="Cliente_ID" not-null="true" />
         </many-to-one>	
         

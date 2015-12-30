@@ -3,9 +3,6 @@ package marres.client.Presenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.dozer.DozerBeanMapper;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.user.client.Window;
@@ -28,8 +25,7 @@ import marres.client.RPC.MainService;
 import marres.client.RPC.MainServiceAsync;
 import marres.client.dto.DCategoriaDTO;
 import marres.client.dto.DRicettaDTO;
-import marres.shared.domain.DCategoria;
-import marres.shared.domain.DRicetta;
+
 
 
 public class MainPresenter implements Presenter {

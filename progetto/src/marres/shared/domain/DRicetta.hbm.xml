@@ -32,16 +32,16 @@
             <column name="Image" />
         </property>
         
-        <many-to-one name="categoria" class="marres.shared.domain.DCategoria" fetch="select">
+        <many-to-one name="categoria" class="marres.shared.domain.DCategoria" >
         	<column name="CategoriaId" not-null="true"></column>
         </many-to-one>
         
-        <list name="ingredienti">
+        <list name="ingredienti" lazy="false">
 			<key>
                 <column name="Ricetta_Id" not-null="true" />
             </key>
             <list-index column="idx" base="0" />
-            <many-to-many entity-name="marres.shared.domain.DIngrediente" fetch="select">
+            <many-to-many entity-name="marres.shared.domain.DIngrediente" >
                 <column name="Ingredienti_id" not-null="true" />
             </many-to-many>
 		</list>

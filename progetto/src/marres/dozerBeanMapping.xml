@@ -9,17 +9,19 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <class-a>marres.shared.domain.DRicetta</class-a>
     <class-b>marres.client.dto.DRicettaDTO</class-b>   
   </mapping>
+  
+   <mapping> 
+    <class-a>marres.shared.domain.DCategoria</class-a>
+    <class-b>marres.client.dto.DCategoriaDTO</class-b>   
+  </mapping>
+  
 <!-- 
   <mapping> 
     <class-a>marres.shared.domain.DCarrello</class-a>
     <class-b>marres.client.dto.DCarrelloDTO</class-b>   
   </mapping>  
 
-  <mapping> 
-    <class-a>marres.shared.domain.DCategoria</class-a>
-    <class-b>marres.client.dto.DCategoriaDTO</class-b>   
-  </mapping>
-  
+ 
   <mapping> 
     <class-a>marres.shared.domain.DCliente</class-a>
     <class-b>marres.client.dto.DClienteDTO</class-b>   
