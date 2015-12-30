@@ -10,7 +10,8 @@ import com.vaadin.polymer.elemental.EventListener;
 import marres.client.AppUtils;
 import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
 import marres.client.Events.EventUp.AggiungiRicettaEvent;
-import marres.shared.DCategoria;
+import marres.client.dto.DCategoriaDTO;
+import marres.shared.domain.DCategoria;
 
 
 
@@ -19,7 +20,7 @@ public class CategoriaItemPresenter implements Presenter {
 	
 	
 	private Display view;
-	private DCategoria Categoria;
+	private DCategoriaDTO Categoria;
 	
 	public interface Display {
 		public DivElement getDivElement();
@@ -53,7 +54,7 @@ public class CategoriaItemPresenter implements Presenter {
 	}
 	
 	
-	public void setCategoria(DCategoria categoria){
+	public void setCategoria(DCategoriaDTO categoria){
 		view.setCategoria(categoria.getNome());
 		this.Categoria= categoria;
 	}

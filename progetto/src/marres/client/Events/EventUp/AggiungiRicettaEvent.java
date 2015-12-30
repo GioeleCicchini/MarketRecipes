@@ -3,16 +3,17 @@ package marres.client.Events.EventUp;
 import com.google.gwt.event.shared.GwtEvent;
 
 import marres.client.Events.EventUp.AggiungiRicettaEventHandler;
-import marres.shared.DRicetta;
+import marres.client.dto.DRicettaDTO;
+import marres.shared.domain.DRicetta;
 
 public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
 	public static Type<AggiungiRicettaEventHandler> TYPE = new Type<AggiungiRicettaEventHandler>();
 	
-	private DRicetta ricetta;
+	private DRicettaDTO ricetta;
 	
 	
 
-	public AggiungiRicettaEvent(DRicetta ricetta) {
+	public AggiungiRicettaEvent(DRicettaDTO ricetta) {
 		this.ricetta = ricetta;
 	}
 
@@ -27,7 +28,7 @@ public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
 		
 	}
 	
-	public DRicetta getRicetta() {
+	public DRicettaDTO getRicetta() {
 		return this.ricetta;
 	}
 

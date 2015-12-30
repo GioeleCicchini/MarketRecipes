@@ -5,12 +5,13 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
-import marres.shared.DRicetta;
+import marres.client.dto.DRicettaDTO;
+import marres.shared.domain.DRicetta;
 
 public class RicettaPresenter implements Presenter {
 
 	Display view;
-	DRicetta Ricetta ;
+	DRicettaDTO Ricetta ;
 	
 	public interface Display {
 		public DivElement getDivElement();
@@ -36,7 +37,7 @@ public class RicettaPresenter implements Presenter {
 
 	}
 	
-	public void setRicetta(DRicetta ricetta){
+	public void setRicetta(DRicettaDTO ricetta){
 		this.Ricetta = ricetta;
 	
 		view.setRicetta(ricetta.getNome(), ricetta.getCottura());

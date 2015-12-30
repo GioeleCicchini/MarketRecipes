@@ -2,17 +2,17 @@ package marres.client.Events.EventMiddle;
 
 import com.google.gwt.event.shared.GwtEvent;
 
-import marres.client.Events.EventUp.AggiungiCategoriaEventHandler;
-import marres.shared.DCategoria;
+import marres.client.dto.DCategoriaDTO;
+
 
 
 public class CambiaCategoriaEvent extends GwtEvent<CambiaCategoriaEventHandler>{
 
 	public static Type<CambiaCategoriaEventHandler> TYPE = new Type<CambiaCategoriaEventHandler>();
 	
-	private DCategoria categoria;		
+	private DCategoriaDTO categoria;		
 	
-	public CambiaCategoriaEvent(DCategoria categoria) {
+	public CambiaCategoriaEvent(DCategoriaDTO categoria) {
 		this.categoria = categoria;
 	}
 
@@ -27,7 +27,7 @@ public class CambiaCategoriaEvent extends GwtEvent<CambiaCategoriaEventHandler>{
 		
 	}
 	
-	public DCategoria getCategoria(){
+	public DCategoriaDTO getCategoria(){
 		return this.categoria;
 	}
 

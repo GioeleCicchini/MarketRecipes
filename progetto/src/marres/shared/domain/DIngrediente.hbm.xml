@@ -2,7 +2,7 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="marres.shared.DIngrediente" table="Ingrediente" >
+	<class name="marres.shared.domain.DIngrediente" table="Ingrediente" >
 		<id name="id" >
 			<column name="Ingredienti_Id" />
 			<generator class="identity" />
@@ -14,7 +14,7 @@
                 <column name="Ingredienti_Id" not-null="true" />
             </key>
             <list-index column="id2" base="0" />
-            <many-to-many entity-name="marres.shared.DRicetta">
+            <many-to-many entity-name="marres.shared.domain.DRicetta">
                 <column name="Ricetta_id" not-null="true" />
             </many-to-many>
 		</list>

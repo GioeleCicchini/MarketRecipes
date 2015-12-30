@@ -2,21 +2,21 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="marres.shared.DOrdine" table="Ordini" >
+	<class name="marres.shared.domain.DOrdine" table="Ordini" >
 		<id name="id" >
 			<column name="Ordine_Id" />
 			<generator class="identity" />
 		</id>
 		
-	<one-to-one name="carrello" class="marres.shared.DCarrello" cascade="all"></one-to-one>
+	<one-to-one name="carrello" class="marres.shared.domain.DCarrello" cascade="all"></one-to-one>
 		
-	<one-to-one name="stato" class="marres.shared.DStatoOrdine" cascade="all"></one-to-one>	
+	<one-to-one name="stato" class="marres.shared.domain.DStatoOrdine" cascade="all"></one-to-one>	
 		
-	 <many-to-one name="cliente" class="marres.shared.DCliente" fetch="select" cascade="all">
+	 <many-to-one name="cliente" class="marres.shared.domain.DCliente" fetch="select" cascade="all">
             <column name="Cliente_ID" not-null="true" />
         </many-to-one>	
         
-	 <many-to-one name="negozio" class="marres.shared.DNegozio" fetch="select" cascade="all">
+	 <many-to-one name="negozio" class="marres.shared.domain.DNegozio" fetch="select" cascade="all">
             <column name="Negozio_ID" not-null="true" />
         </many-to-one>	
        

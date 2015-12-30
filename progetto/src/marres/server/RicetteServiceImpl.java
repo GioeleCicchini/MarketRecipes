@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -17,70 +19,64 @@ import org.hibernate.criterion.Restrictions;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import marres.client.RPC.RicetteService;
+import marres.client.dto.DCategoriaDTO;
+import marres.client.dto.DRicettaDTO;
 import marres.client.util.HibernateUtil;
-import marres.shared.DCarrello;
-import marres.shared.DCategoria;
-import marres.shared.DCliente;
-import marres.shared.DGiornoPianificazioneRicette;
-import marres.shared.DIndirizzo;
-import marres.shared.DNegozio;
-import marres.shared.DOrdine;
-import marres.shared.DRicetta;
-import marres.shared.DStatoOrdine;
+import marres.shared.domain.DCarrello;
+import marres.shared.domain.DCategoria;
+import marres.shared.domain.DCliente;
+import marres.shared.domain.DGiornoPianificazioneRicette;
+import marres.shared.domain.DIndirizzo;
+import marres.shared.domain.DNegozio;
+import marres.shared.domain.DOrdine;
+import marres.shared.domain.DRicetta;
+import marres.shared.domain.DStatoOrdine;
 
 
 public class RicetteServiceImpl extends RemoteServiceServlet implements RicetteService {
 
 	
 	@Override
-	public DRicetta[] getRicette(DCategoria categoria) {
+	public List<DRicettaDTO> getRicette(DCategoriaDTO categoria) {
 
 		//AggiungiRicetta();
 		
-		
+	
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		session.beginTransaction();
 		
-	
-		categoria.setId(4);
+		List<DRicetta> RicetteQuary = new ArrayList<DRicetta>();
 
 		Criteria cr = session.createCriteria(DRicetta.class);
 		
-		List ricette = cr.list();
-		DRicetta[] ricetteRitorno = new DRicetta[ricette.size()];
+		RicetteQuary = (List<DRicetta>) cr.list();
 		
-		for(int i=0; i<ricette.size(); i=i+1) {
-				ricetteRitorno[i] = (DRicetta) ricette.get(i);
-		}
-	
-		return ricetteRitorno;
-	
-
-/*	
-		this.prova();
-
-		// DRicetta[] lista = new DRicetta[3];
-		if(categoria.getNome().equals("Primi")){
-		DRicetta ricetta1 = new DRicetta();
-		DRicetta ricetta2 = new DRicetta();
-		DRicetta ricetta3 = new DRicetta();
-		lista[0]= ricetta1;
-		lista[1]= ricetta2;
-		lista[2]= ricetta3;
-		}		
-		if(categoria.getNome().equals("Secondi")){
-			DRicetta ricetta1 = new DRicetta();
-			DRicetta ricetta2 = new DRicetta();
-			DRicetta ricetta3 = new DRicetta();
-			lista[0]= ricetta1;
-			lista[1]= ricetta2;
-			lista[2]= ricetta3;
-			}		
-	*/	
-
+		List<DRicettaDTO> ricetteDTO = new ArrayList<DRicettaDTO>(
+		       RicetteQuary != null ? RicetteQuary.size() : 0);
+		    if (RicetteQuary != null) {
+		    	List<String> myMappingFiles = new ArrayList<String>();
+		    	myMappingFiles.add("marres/dozerBeanMapping.xml");
+		    	DozerBeanMapper mapper = new DozerBeanMapper();
+		    	mapper.setMappingFiles(myMappingFiles);
+		    	
+		      for (DRicetta ricetta : RicetteQuary) {
+		        ricetteDTO.add(mapper.map(
+		            ricetta, DRicettaDTO.class));
+		      }
+		    }
+	/*	
+		if (RicetteQuary != null) {
+		      for (DRicetta ricetta : RicetteQuary) {
+		    	 
+		        accountDTOs.add(DozerBeanMapperSingletonWrapper.getInstance().map(
+		            account, AccountDTO.class));
+		      }
+		    }
+		*/
 		
-
+		return ricetteDTO;
+			
 	}
 
 	

@@ -5,14 +5,56 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://dozer.sourceforge.net
 http://dozer.sourceforge.net/schema/beanmapping.xsd">
   
+   <mapping> 
+    <class-a>marres.shared.domain.DRicetta</class-a>
+    <class-b>marres.client.dto.DRicettaDTO</class-b>   
+  </mapping>
+<!-- 
   <mapping> 
-    <class-a>com.google.musicstore.domain.Account</class-a>
-    <class-b>com.google.musicstore.client.dto.AccountDTO</class-b>   
+    <class-a>marres.shared.domain.DCarrello</class-a>
+    <class-b>marres.client.dto.DCarrelloDTO</class-b>   
   </mapping>  
 
   <mapping> 
-    <class-a>com.google.musicstore.domain.Record</class-a>
-    <class-b>com.google.musicstore.client.dto.RecordDTO</class-b>   
-  </mapping>"
+    <class-a>marres.shared.domain.DCategoria</class-a>
+    <class-b>marres.client.dto.DCategoriaDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DCliente</class-a>
+    <class-b>marres.client.dto.DClienteDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DGiornoPianificazioneRicette</class-a>
+    <class-b>marres.client.dto.DGiornoPianificazioneRicetteDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DIndirizzo</class-a>
+    <class-b>marres.client.dto.DIndirizzoDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DIngrediente</class-a>
+    <class-b>marres.client.dto.DIngredienteDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DNegozio</class-a>
+    <class-b>marres.client.dto.DNegozioDTO</class-b>   
+  </mapping>
+  
+  <mapping> 
+    <class-a>marres.shared.domain.DOrdine</class-a>
+    <class-b>marres.client.dto.DOrdineDTO</class-b>   
+  </mapping>
+  
+ 
+  <mapping> 
+    <class-a>marres.shared.domain.DStatoOrdine</class-a>
+    <class-b>marres.client.dto.DStatoOrdineDTO</class-b>   
+  </mapping>
+   -->
   
 </mappings>

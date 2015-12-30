@@ -1,4 +1,4 @@
-package marres.shared;
+package marres.shared.domain;
 
 public class DOrdine {
 	

@@ -1,11 +1,14 @@
-package marres.shared;
+package marres.client.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import marres.shared.domain.DCategoria;
+import marres.shared.domain.DIngrediente;
 
-public class DRicetta implements Serializable{
+
+public class DRicettaDTO implements Serializable{
 
 	private long id;
 	private String nome;
@@ -14,11 +17,10 @@ public class DRicetta implements Serializable{
 	private String cottura;
 	private String dosi;
 	private byte[] image;
-	private DCategoria categoria;
-	private List<DIngrediente> ingredienti = new ArrayList<DIngrediente>();
+	private List<DIngredienteDTO> ingredienti = new ArrayList<DIngredienteDTO>();
 
 	
-	public DRicetta(){
+	public DRicettaDTO(){
 		
 	}
 	
@@ -95,13 +97,6 @@ public class DRicetta implements Serializable{
 	}
 
 
-
-	public void setCategoria(DCategoria categoria){
-		this.categoria = categoria;
-	}
-	public DCategoria getCategoria(){
-		return this.categoria;
-	}
 	
 	public long getId() {
 		return id;
@@ -110,11 +105,11 @@ public class DRicetta implements Serializable{
 		this.id = id;
 	}
 
-	public List<DIngrediente> getIngredienti() {
+	public List<DIngredienteDTO> getIngredienti() {
 		return ingredienti;
 	}
 
-	public void setIngredienti(List<DIngrediente> ingredienti) {
+	public void setIngredienti(List<DIngredienteDTO> ingredienti) {
 		this.ingredienti = ingredienti;
 	}
 

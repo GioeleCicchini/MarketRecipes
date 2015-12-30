@@ -2,10 +2,18 @@ package marres.server;
 
 
 import marres.client.RPC.CategorieService;
-import marres.shared.DCategoria;
-import marres.shared.DRicetta;
+import marres.client.dto.DCategoriaDTO;
+import marres.client.dto.DRicettaDTO;
+import marres.client.util.HibernateUtil;
+import marres.shared.domain.DCategoria;
+import marres.shared.domain.DRicetta;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.dozer.DozerBeanMapper;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -13,15 +21,17 @@ public class CategorieServiceImpl extends RemoteServiceServlet implements Catego
 
 
 	@Override
-	public DCategoria[] getCategorie(ArrayList<DCategoria> symbols) {
+	public DCategoriaDTO[] getCategorie() {
 		
-		DCategoria categoria1 = new DCategoria();
+		
+			    
+		DCategoriaDTO categoria1 = new DCategoriaDTO();
 		categoria1.setNome("Primi");
 		
-		DCategoria categoria2 = new DCategoria();
+		DCategoriaDTO categoria2 = new DCategoriaDTO();
 		categoria2.setNome("Secondi");
 	
-		DCategoria[] lista = new DCategoria[2];
+		DCategoriaDTO[] lista = new DCategoriaDTO[2];
 		lista[0]= categoria1;
 		lista[1]= categoria2;
 		

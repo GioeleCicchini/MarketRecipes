@@ -1,11 +1,11 @@
-package marres.shared;
+package marres.client.dto;
 
-public class DIndirizzo {
+public class DIndirizzoDTO {
 	
 	private long id;
 	private String indirizzo, numCiv, cap;
 	
-	public DIndirizzo(){
+	public DIndirizzoDTO(){
 		
 		
 	}

@@ -4,6 +4,8 @@ package marres.client.Presenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.user.client.Window;
@@ -22,20 +24,20 @@ import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
 import marres.client.Events.EventMiddle.CambiaCategoriaEventHandler;
 import marres.client.Events.EventUp.AggiungiCategoriaEvent;
 import marres.client.Events.EventUp.AggiungiRicettaEvent;
-import marres.client.RPC.CategorieService;
-import marres.client.RPC.CategorieServiceAsync;
-import marres.client.RPC.RicetteService;
-import marres.client.RPC.RicetteServiceAsync;
-import marres.shared.DCategoria;
-import marres.shared.DRicetta;
+import marres.client.RPC.MainService;
+import marres.client.RPC.MainServiceAsync;
+import marres.client.dto.DCategoriaDTO;
+import marres.client.dto.DRicettaDTO;
+import marres.shared.domain.DCategoria;
+import marres.shared.domain.DRicetta;
 
 
 public class MainPresenter implements Presenter {
 	
-	private DCategoria Categoria ;
-	private RicetteServiceAsync ricetteSvc = GWT.create(RicetteService.class);
-	private ArrayList<DCategoria> categorie = new ArrayList<DCategoria>();
-	private CategorieServiceAsync categorieSvc = GWT.create(CategorieService.class);
+	private DCategoriaDTO Categoria ;
+	private MainServiceAsync MainSvc = GWT.create(MainService.class);
+	private ArrayList<DCategoriaDTO> categorie = new ArrayList<DCategoriaDTO>();
+	
 	
 	private Display view;
 
@@ -53,7 +55,7 @@ public class MainPresenter implements Presenter {
 	
 	public MainPresenter(Display view){
 		this.view = view;
-		Categoria = new DCategoria();
+		Categoria = new DCategoriaDTO();
 		Categoria.setNome("Primi");
 		bind();
 		InizializzaEventiView();
@@ -107,38 +109,38 @@ public class MainPresenter implements Presenter {
 
 	
 	private void PrelevaRicette(){
-		if (ricetteSvc == null) {
-		      ricetteSvc = GWT.create(RicetteService.class);
+		if (MainSvc == null) {
+		      MainSvc = GWT.create(MainService.class);
 		    }
-		    AsyncCallback<DRicetta[]> callback = new AsyncCallback<DRicetta[]>() {
+		    AsyncCallback<List<DRicettaDTO>> callback = new AsyncCallback<List<DRicettaDTO>>() {
 		      public void onFailure(Throwable caught) {
 		    	  Window.alert("ERRORE");
 		      }
-		      public void onSuccess(DRicetta[] result) {
-		        for(DRicetta ricetta : result){
-		        
+		      public void onSuccess(List<DRicettaDTO> result) {
+		        for(DRicettaDTO ricetta : result){
+
 		        	AggiungiRicetta(ricetta);
 		        }
 		      }
 		    };
-		    ricetteSvc.getRicette(Categoria, callback);
+		    MainSvc.getRicette(Categoria, callback);
 	}
 	
 	private void PrelevaCategorie(){
-		if (categorieSvc == null) {
-		      categorieSvc = GWT.create(CategorieService.class);
+		if (MainSvc == null) {
+		      MainSvc = GWT.create(MainService.class);
 		    }
-		    AsyncCallback<DCategoria[]> callback = new AsyncCallback<DCategoria[]>() {
+		    AsyncCallback<List<DCategoriaDTO>> callback = new AsyncCallback<List<DCategoriaDTO>>() {
 		      public void onFailure(Throwable caught) {
 		    	  Window.alert("ERRORE");
 		      }
-		      public void onSuccess(DCategoria[] result) {
-		        for(DCategoria categoria : result){
+		      public void onSuccess(List<DCategoriaDTO> result) {
+		        for(DCategoriaDTO categoria : result){
 		        	AggiungiCategoria(categoria);
 		        }
 		      }
 		    };
-		    categorieSvc.getCategorie(categorie, callback);
+		    MainSvc.getCategorie(callback);
 	}
 	
 	
@@ -147,11 +149,11 @@ public class MainPresenter implements Presenter {
 		return null;
 	}
 
-	public void AggiungiRicetta (DRicetta ricetta) {
+	public void AggiungiRicetta (DRicettaDTO ricetta) {
 		AppUtils.EVENT_BUS.fireEvent(new AggiungiRicettaEvent(ricetta));
 	}
 
-	public void AggiungiCategoria (DCategoria categoria){
+	public void AggiungiCategoria (DCategoriaDTO categoria){
 		AppUtils.EVENT_BUS.fireEvent(new AggiungiCategoriaEvent(categoria));
 	}
 

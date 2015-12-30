@@ -1,4 +1,4 @@
-package marres.shared;
+package marres.shared.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

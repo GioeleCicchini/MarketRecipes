@@ -12,20 +12,20 @@
   <property name="hibernate.show_sql">false</property>
   <property name="hibernate.hbm2ddl.auto">update</property>
   <property name="hibernate.connection.pool_size">1</property>
-
+  
   
   <!--  vedi il file DRicetta.hbm è da cambiare database dopo creazione  -->
-  <mapping resource="marres/shared/DRicetta.hbm.xml"/>
+  <mapping resource="marres/shared/domain/DRicetta.hbm.xml"/>
   
   
-   <mapping resource="marres/shared/DCategoria.hbm.xml"/>
-    <mapping resource="marres/shared/DIngrediente.hbm.xml"/>
- <mapping resource="marres/shared/DCarrello.hbm.xml"/>
-  <mapping resource="marres/shared/DOrdine.hbm.xml"/>
-    <mapping resource="marres/shared/DStatoOrdine.hbm.xml"/>
-    <mapping resource="marres/shared/DCliente.hbm.xml"/>
-     <mapping resource="marres/shared/DNegozio.hbm.xml"/>
-      <mapping resource="marres/shared/DIndirizzo.hbm.xml"/>
-      <mapping resource="marres/shared/DGiornoPianificazioneRicette.hbm.xml"/>
+   <mapping resource="marres/shared/domain/DCategoria.hbm.xml"/>
+    <mapping resource="marres/shared/domain/DIngrediente.hbm.xml"/>
+ <mapping resource="marres/shared/domain/DCarrello.hbm.xml"/>
+  <mapping resource="marres/shared/domain/DOrdine.hbm.xml"/>
+    <mapping resource="marres/shared/domain/DStatoOrdine.hbm.xml"/>
+    <mapping resource="marres/shared/domain/DCliente.hbm.xml"/>
+     <mapping resource="marres/shared/domain/DNegozio.hbm.xml"/>
+      <mapping resource="marres/shared/domain/DIndirizzo.hbm.xml"/>
+      <mapping resource="marres/shared/domain/DGiornoPianificazioneRicette.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

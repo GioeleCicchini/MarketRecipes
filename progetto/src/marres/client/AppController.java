@@ -2,6 +2,9 @@ package marres.client;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.dom.client.DivElement;
 
 import com.google.gwt.user.client.ui.Panel;
@@ -17,8 +20,10 @@ import marres.client.Presenter.RicettaPresenter;
 import marres.client.View.CategoriaItem;
 import marres.client.View.Main;
 import marres.client.View.VRicetta;
-import marres.shared.DCategoria;
-import marres.shared.DRicetta;
+import marres.client.dto.DCategoriaDTO;
+import marres.client.dto.DRicettaDTO;
+import marres.shared.domain.DCategoria;
+import marres.shared.domain.DRicetta;
 
 public class AppController {
 	
@@ -34,11 +39,13 @@ public class AppController {
 		
 	}
 	public void go(Panel panel){
+	
 	// inizializzazione Applicazione	
 		 Main main = new Main();
 		 MainPresenter mainpresenter = new MainPresenter(main);
 		 RegistraEventi();
 		 mainpresenter.go(panel);
+		 
 	}
 	
 	
@@ -48,7 +55,7 @@ public class AppController {
 			@Override
 			public void OnAggiungiRicetta(AggiungiRicettaEvent event) {
 				
-				DRicetta Ricetta = event.getRicetta();
+				DRicettaDTO Ricetta = event.getRicetta();
 				VRicetta Vricetta = new VRicetta();
 				RicettaPresenter ricettapresenter = new RicettaPresenter(Vricetta);
 				
@@ -63,7 +70,7 @@ public class AppController {
 			
 			@Override
 			public void OnAggiungiCategoria(AggiungiCategoriaEvent event) {
-				DCategoria Categoria = event.getCategoria();
+				DCategoriaDTO Categoria = event.getCategoria();
 				CategoriaItem Vcategoria = new CategoriaItem();
 				CategoriaItemPresenter categoriapresenter = new CategoriaItemPresenter(Vcategoria);
 				categoriapresenter.setCategoria(Categoria);

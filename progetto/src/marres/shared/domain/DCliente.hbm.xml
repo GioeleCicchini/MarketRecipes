@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="marres.shared.DCliente" table="Clienti" >
+	<class name="marres.shared.domain.DCliente" table="Clienti" >
 		<id name="id" >
 			<column name="Cliente_Id" />
 			<generator class="identity" />
@@ -14,7 +14,7 @@
                 <column name="Cliente_ID" not-null="true" />
             </key>
              <list-index column="idIndex" base="0" />
-            <one-to-many class="marres.shared.DOrdine" />
+            <one-to-many class="marres.shared.domain.DOrdine" />
         </list>
         
          <list name="pianificazione" table="GiorniPianificazioneRicette" 
@@ -23,7 +23,7 @@
                 <column name="Cliente_ID" not-null="true" />
             </key>
              <list-index column="idIndex" base="0" />
-            <one-to-many class="marres.shared.DGiornoPianificazioneRicette" />
+            <one-to-many class="marres.shared.domain.DGiornoPianificazioneRicette" />
         </list>
 	
 	<property name="nome">

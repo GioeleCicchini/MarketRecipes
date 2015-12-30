@@ -1,18 +1,18 @@
-package marres.shared;
+package marres.client.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DNegozio {
+public class DNegozioDTO {
 	
 	
 	private long id;
 	private String marchio;
 	private String partitaIva;
-	private DIndirizzo indirizzo;
-	private List<DOrdine> ordini = new ArrayList<DOrdine>();
+	private DIndirizzoDTO indirizzo;
+	private List<DOrdineDTO> ordini = new ArrayList<DOrdineDTO>();
 	
-	public DNegozio(){
+	public DNegozioDTO(){
 		
 	}
 
@@ -24,11 +24,11 @@ public class DNegozio {
 		this.id = id;
 	}
 
-	public List<DOrdine> getOrdini() {
+	public List<DOrdineDTO> getOrdini() {
 		return ordini;
 	}
 
-	public void setOrdini(List<DOrdine> ordini) {
+	public void setOrdini(List<DOrdineDTO> ordini) {
 		this.ordini = ordini;
 	}
 
@@ -48,11 +48,11 @@ public class DNegozio {
 		this.partitaIva = partitaIva;
 	}
 
-	public DIndirizzo getIndirizzo() {
+	public DIndirizzoDTO getIndirizzo() {
 		return indirizzo;
 	}
 
-	public void setIndirizzo(DIndirizzo indirizzo) {
+	public void setIndirizzo(DIndirizzoDTO indirizzo) {
 		this.indirizzo = indirizzo;
 	}
 

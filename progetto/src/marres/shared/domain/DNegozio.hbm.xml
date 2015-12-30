@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="marres.shared.DNegozio" table="Negozi" >
+	<class name="marres.shared.domain.DNegozio" table="Negozi" >
 		<id name="id" >
 			<column name="Negozio_Id" />
 			<generator class="identity" />
@@ -13,7 +13,7 @@
                 <column name="Negozio_ID" not-null="true" />
             </key>
              <list-index column="idIndex" base="0" />
-            <one-to-many class="marres.shared.DOrdine" />
+            <one-to-many class="marres.shared.domain.DOrdine" />
         </list>
 	<property name="marchio">
 		<column name="Marchio"></column>
@@ -23,7 +23,7 @@
 		<column name="PartitaIva"></column>
 	</property>
 	
-	<one-to-one name="indirizzo" class="marres.shared.DIndirizzo"></one-to-one>
+	<one-to-one name="indirizzo" class="marres.shared.domain.DIndirizzo"></one-to-one>
 	
 	
 	

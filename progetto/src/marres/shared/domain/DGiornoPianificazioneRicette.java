@@ -1,4 +1,4 @@
-package marres.shared;
+package marres.shared.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
