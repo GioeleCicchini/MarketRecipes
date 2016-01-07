@@ -1,6 +1,8 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b2='urn:import:com.github.gwtbootstrap.datetimepicker.client.ui'>
+             
 
     <g:HTMLPanel>
         <style is="custom-style">
@@ -21,6 +23,11 @@
                 right: 20px;
                 --paper-fab-background: var(--paper-red-500);
             }
+            .main {
+            font-size: 20px;
+            background-color: #EEEEEE;
+            line-height:25px;
+            }
         </style>
         <paper-drawer-panel ui:field="drawerPanel">
             <div drawer="">
@@ -31,7 +38,7 @@
                     </div>
                 </paper-header-panel>
             </div>
-            <div main="">
+            <div main="" class="main">
                 <paper-header-panel mode="seamed">
                     <paper-toolbar class="toolbar">
                         <paper-icon-button ui:field="menu" icon="more-vert" paper-drawer-toggle=""/>
@@ -58,6 +65,8 @@
         <paper-button ui:field="confirmAddButton"
                       dialog-confirm="">OK</paper-button>
     </div>
+    <div>  <b2:DateTimeBox format="dd/mm/yyyy hh:ii" autoClose="true" /> </div>
+   
   </paper-dialog>
     </g:HTMLPanel>
 </ui:UiBinder>

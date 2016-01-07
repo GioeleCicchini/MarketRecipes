@@ -23,16 +23,15 @@ import marres.client.Events.EventUp.AggiungiCategoriaEvent;
 import marres.client.Events.EventUp.AggiungiRicettaEvent;
 import marres.client.RPC.MainService;
 import marres.client.RPC.MainServiceAsync;
-import marres.client.dto.DCategoriaDTO;
-import marres.client.dto.DRicettaDTO;
+import marres.shared.dto.DCategoriaDTO;
+import marres.shared.dto.DRicettaDTO;
 
 
 
 public class MainPresenter implements Presenter {
 	
-	private DCategoriaDTO Categoria ;
 	private MainServiceAsync MainSvc = GWT.create(MainService.class);
-	private ArrayList<DCategoriaDTO> categorie = new ArrayList<DCategoriaDTO>();
+	private DCategoriaDTO categoria;
 	
 	
 	private Display view;
@@ -51,8 +50,6 @@ public class MainPresenter implements Presenter {
 	
 	public MainPresenter(Display view){
 		this.view = view;
-		Categoria = new DCategoriaDTO();
-		Categoria.setNome("Primi");
 		bind();
 		InizializzaEventiView();
 		
@@ -60,9 +57,9 @@ public class MainPresenter implements Presenter {
 
 	public void go(Panel panel) {
 		panel.add(view.asWidget());
-		PrelevaRicette();
 		PrelevaCategorie();	
 	}
+	
 	@Override
 	public void InizializzaEventiView(){
 		
@@ -90,9 +87,8 @@ public class MainPresenter implements Presenter {
 
 			@Override
 			public void OnCambiaCategoria(CambiaCategoriaEvent event) {
-				Categoria.setNome(event.getCategoria().getNome());	
 				view.EliminaContenutiPrincipali();
-				PrelevaRicette();
+				PrelevaRicette(event.getCategoria());
 			}
 		});
 		
@@ -104,7 +100,7 @@ public class MainPresenter implements Presenter {
 	}
 
 	
-	private void PrelevaRicette(){
+	private void PrelevaRicette(DCategoriaDTO Categoria){
 		if (MainSvc == null) {
 		      MainSvc = GWT.create(MainService.class);
 		    }
@@ -113,12 +109,15 @@ public class MainPresenter implements Presenter {
 		    	  Window.alert("ERRORE");
 		      }
 		      public void onSuccess(List<DRicettaDTO> result) {
+		    	  
 		        for(DRicettaDTO ricetta : result){
-
 		        	AggiungiRicetta(ricetta);
 		        }
+		        
+		        
 		      }
 		    };
+		    
 		    MainSvc.getRicette(Categoria, callback);
 	}
 	
@@ -131,6 +130,8 @@ public class MainPresenter implements Presenter {
 		    	  Window.alert("ERRORE");
 		      }
 		      public void onSuccess(List<DCategoriaDTO> result) {
+		    	  categoria = result.get(0);
+		    	  PrelevaRicette(categoria);
 		        for(DCategoriaDTO categoria : result){
 		        	AggiungiCategoria(categoria);
 		        }

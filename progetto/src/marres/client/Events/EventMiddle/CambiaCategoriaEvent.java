@@ -2,7 +2,7 @@ package marres.client.Events.EventMiddle;
 
 import com.google.gwt.event.shared.GwtEvent;
 
-import marres.client.dto.DCategoriaDTO;
+import marres.shared.dto.DCategoriaDTO;
 
 
 

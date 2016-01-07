@@ -9,7 +9,7 @@
 		</id>
 
 		  <list name="OrdiniEffettuati" table="Ordini" 
-				inverse="true" lazy="true" fetch="select" cascade="all">
+				inverse="true" lazy="true"  cascade="all">
             <key>
                 <column name="Cliente_ID" not-null="true" />
             </key>
@@ -18,7 +18,7 @@
         </list>
         
          <list name="pianificazione" table="GiorniPianificazioneRicette" 
-				inverse="true" lazy="true" fetch="select" cascade="all">
+				inverse="true" lazy="true" cascade="all">
             <key>
                 <column name="Cliente_ID" not-null="true" />
             </key>

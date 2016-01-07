@@ -1,4 +1,4 @@
-package marres.client.dto;
+package marres.shared.dto;
 
 import java.util.ArrayList;
 import java.util.List;

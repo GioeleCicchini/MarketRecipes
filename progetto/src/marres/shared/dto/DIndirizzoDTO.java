@@ -1,4 +1,4 @@
-package marres.client.dto;
+package marres.shared.dto;
 
 public class DIndirizzoDTO {
 	

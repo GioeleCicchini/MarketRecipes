@@ -3,7 +3,7 @@ package marres.client.Events.EventUp;
 import com.google.gwt.event.shared.GwtEvent;
 
 import marres.client.Events.EventUp.AggiungiCategoriaEventHandler;
-import marres.client.dto.DCategoriaDTO;
+import marres.shared.dto.DCategoriaDTO;
 
 
 public class AggiungiCategoriaEvent extends GwtEvent<AggiungiCategoriaEventHandler>{

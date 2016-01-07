@@ -3,8 +3,8 @@ package marres.client.Events.EventUp;
 import com.google.gwt.event.shared.GwtEvent;
 
 import marres.client.Events.EventUp.AggiungiRicettaEventHandler;
-import marres.client.dto.DRicettaDTO;
 import marres.shared.domain.DRicetta;
+import marres.shared.dto.DRicettaDTO;
 
 public class AggiungiRicettaEvent extends GwtEvent<AggiungiRicettaEventHandler>{
 	public static Type<AggiungiRicettaEventHandler> TYPE = new Type<AggiungiRicettaEventHandler>();

@@ -8,7 +8,7 @@
 		</id>
 		
 	<list name="ordini" table="Ordini" 
-				inverse="true" lazy="true" fetch="select" cascade="all">
+				inverse="true" lazy="true" cascade="all">
             <key>
                 <column name="Negozio_ID" not-null="true" />
             </key>

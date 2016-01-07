@@ -14,7 +14,7 @@
                 <column name="Carrello_Id" not-null="true" />
             </key>
             <list-index column="idIndex" base="0" />
-            <many-to-many entity-name="marres.shared.domain.DRicetta" fetch="select">
+            <many-to-many entity-name="marres.shared.domain.DRicetta">
                 <column name="Ricetta_Id" not-null="true"  />
             </many-to-many>
 		</list>

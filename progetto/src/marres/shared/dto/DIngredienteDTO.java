@@ -1,26 +1,36 @@
-package marres.client.dto;
+package marres.shared.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class DCarrelloDTO {
-
+public class DIngredienteDTO implements Serializable{
+	
 	private long id;
-	private long nome;
+	private String nome;
+	
 	private List<DRicettaDTO> ricette = new ArrayList<DRicettaDTO>();
 	
-	public DCarrelloDTO(){
+	public DIngredienteDTO(){
 		
 	}
-	
-	public long getNome() {
+
+	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(long nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+
+
+	public List<DRicettaDTO> getRicette() {
+		return ricette;
+	}
+
+	public void setRicette(List<DRicettaDTO> ricette) {
+		this.ricette = ricette;
 	}
 
 	public long getId() {
@@ -30,15 +40,6 @@ public class DCarrelloDTO {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
-	public List<DRicettaDTO> getRicette() {
-		return ricette;
-	}
-
-
-	public void setRicette(List<DRicettaDTO> ricette) {
-		this.ricette = ricette;
-	}
+	
 
 }

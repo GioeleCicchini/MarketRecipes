@@ -4,7 +4,7 @@
 <hibernate-mapping>
 	<class name="marres.shared.domain.DCategoria" table="Categoria" >
 		<id name="id">
-			<column name="CategoriaId" />
+			<column name="Categoria_Id" />
 			<generator class="identity"></generator>
 		</id>
 		<property name="nome">
@@ -13,7 +13,7 @@
 		
 		<list name="ricetta" cascade="all">
 			<key>
-				<column name="CategoriaId" not-null="true" ></column>
+				<column name="Categoria_Id" not-null="true" ></column>
 			</key>
 		<list-index column="idx" base="0" />
 		<one-to-many class="marres.shared.domain.DRicetta"></one-to-many>

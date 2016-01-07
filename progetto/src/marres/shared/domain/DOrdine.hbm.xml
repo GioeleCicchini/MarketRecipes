@@ -12,11 +12,11 @@
 		
 	<one-to-one name="stato" class="marres.shared.domain.DStatoOrdine" cascade="all"></one-to-one>	
 		
-	 <many-to-one name="cliente" class="marres.shared.domain.DCliente" fetch="select" cascade="all">
+	 <many-to-one name="cliente" class="marres.shared.domain.DCliente" cascade="all">
             <column name="Cliente_ID" not-null="true" />
         </many-to-one>	
         
-	 <many-to-one name="negozio" class="marres.shared.domain.DNegozio" fetch="select" cascade="all">
+	 <many-to-one name="negozio" class="marres.shared.domain.DNegozio" cascade="all">
             <column name="Negozio_ID" not-null="true" />
         </many-to-one>	
        

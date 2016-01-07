@@ -27,13 +27,17 @@
             <column name="Dosi"/>
         </property>
         
+        <property name="costo">
+            <column name="Costo"/>
+        </property>
+        
         <!--  Questo campo una volta creato il database la prima volta va modificato dal database da tiny-bloob a medium-blob  -->
-        <property name="image" type="binary">
+        <property name="image" >
             <column name="Image" />
         </property>
         
         <many-to-one name="categoria" class="marres.shared.domain.DCategoria" >
-        	<column name="CategoriaId" not-null="true"></column>
+        	<column name="Categoria_Id" not-null="true"></column>
         </many-to-one>
         
         <list name="ingredienti" lazy="false">

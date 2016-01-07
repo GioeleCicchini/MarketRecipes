@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
+		<div>
+						<table>
+							<tr>
+								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
+								<td class="dettagliTableTD" ui:field="nomeIngrediente"> Riso</td>
+								<td class="dettagliTableTD">
+										<paper-dropdown-menu label="Prodotto">
+											  <paper-menu class="dropdown-content" selected="0">
+											    <paper-item>Riso Flora</paper-item>
+											    <paper-item>Riso Scotti</paper-item>
+											    <paper-item>Riso Peppe</paper-item>
+											    <paper-item>Riso Almadino</paper-item>
+											  </paper-menu>
+										</paper-dropdown-menu>
+								</td>
+								<td class="dettagliTableTD"> 2£</td>
+							</tr>
+							</table>
+		</div>	
+	
+</ui:UiBinder> 

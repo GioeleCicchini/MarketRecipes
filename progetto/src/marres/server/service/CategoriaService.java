@@ -2,22 +2,20 @@ package marres.server.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.dozer.DozerBeanMapper;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import marres.client.dto.DCategoriaDTO;
-import marres.client.dto.DRicettaDTO;
 import marres.client.util.HibernateUtil;
 import marres.shared.domain.DCategoria;
-import marres.shared.domain.DRicetta;
+import marres.shared.dto.DCategoriaDTO;
 
 public class CategoriaService {
 	
 	public CategoriaService(){}
 	
+	@SuppressWarnings("unchecked")
 	public List<DCategoriaDTO> PrelevaCategorie(){
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -54,8 +52,7 @@ public class CategoriaService {
 			    	mapper.setMappingFiles(myMappingFiles);
 			    	
 			      for (DCategoria categoria : CategorieQuary) {
-			        categorieDTO.add(mapper.map(
-			            categoria, DCategoriaDTO.class));
+			        categorieDTO.add(mapper.map(categoria, DCategoriaDTO.class));
 			      }
 			    }
 			    return categorieDTO;

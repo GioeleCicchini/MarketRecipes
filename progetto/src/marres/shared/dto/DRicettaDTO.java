@@ -1,4 +1,4 @@
-package marres.client.dto;
+package marres.shared.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,8 +15,10 @@ public class DRicettaDTO implements Serializable{
 	private String difficolta;
 	private String preparazione;
 	private String cottura;
+	private String costo;
 	private String dosi;
-	private byte[] image;
+	private String image;
+	private DCategoriaDTO categoria;
 	private List<DIngredienteDTO> ingredienti = new ArrayList<DIngredienteDTO>();
 
 	
@@ -86,13 +88,13 @@ public class DRicettaDTO implements Serializable{
 
 
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
 
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -111,6 +113,30 @@ public class DRicettaDTO implements Serializable{
 
 	public void setIngredienti(List<DIngredienteDTO> ingredienti) {
 		this.ingredienti = ingredienti;
+	}
+
+
+
+	public DCategoriaDTO getCategoria() {
+		return categoria;
+	}
+
+
+
+	public void setCategoria(DCategoriaDTO categoria) {
+		this.categoria = categoria;
+	}
+
+
+
+	public String getCosto() {
+		return costo;
+	}
+
+
+
+	public void setCosto(String costo) {
+		this.costo = costo;
 	}
 
 

@@ -29,7 +29,10 @@ public class Entry implements EntryPoint {
 	                PaperButtonElement.SRC,
 	                PaperCheckboxElement.SRC,
 	                PaperCardElement.SRC,
-	                PaperIconButtonElement.SRC
+	                PaperIconButtonElement.SRC,
+	                PaperDropdownMenuElement.SRC,
+	                PaperMenuElement.SRC,
+	                PaperItemElement.SRC
 
         ), new Function() {
             public Object call(Object arg) {

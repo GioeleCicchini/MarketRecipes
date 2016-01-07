@@ -13,7 +13,8 @@ public class DRicetta implements Serializable{
 	private String preparazione;
 	private String cottura;
 	private String dosi;
-	private byte[] image;
+	private String costo;
+	private String image;
 	private DCategoria categoria;
 	private List<DIngrediente> ingredienti = new ArrayList<DIngrediente>();
 
@@ -84,13 +85,13 @@ public class DRicetta implements Serializable{
 
 
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
 
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -116,6 +117,18 @@ public class DRicetta implements Serializable{
 
 	public void setIngredienti(List<DIngrediente> ingredienti) {
 		this.ingredienti = ingredienti;
+	}
+
+
+
+	public String getCosto() {
+		return costo;
+	}
+
+
+
+	public void setCosto(String costo) {
+		this.costo = costo;
 	}
 
 

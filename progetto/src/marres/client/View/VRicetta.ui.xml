@@ -30,6 +30,12 @@
 		width:100%;
 		height:200px;
 		}
+		.imageDescrizione{
+		margin:0px;
+		padding:0px;
+		width:100%;
+		height:200px;
+		}
 		.riepilogo{
 		font-size:15px;
 		text-align:right;
@@ -60,44 +66,173 @@
 		.PrezzoFinale{
 				margin-top:0px;
 		}
+		.dettagliTable{
+		width:100%;
+		}
+		.dettagliTableTD{
+		width:25%;
+		text-align:center;
+		font-weight: bold;
+		font-size:20px;
+		padding-bottom:20px;
+		}
+		.totale{
+		margin-top:50px;
+		}
+		.dialog{
+		width:80%;
+		height:85%;
+		margin:0px;
+		position: fixed;
+        top: 50px;
+		}
+		.AggiungiAlCarrello{
+		 background-color: rgba(229, 57, 53, 1);
+		 color:white;
+		
+		}
+		.TitoloRicettaDettagli{
+		margin:0;
+		padding:0px;
+		width:100%;
+		height:50px;
+		background-color:rgba(229, 57, 53, 1);
+		color:white;
+		font-size:30px;
+		}
+		.titolocenter{
+		padding-top:13px;
+		padding-left:20px;
+		}
 
         </style>
-		        <paper-card class="papercard" image="">          
-				            <iron-image sizing="cover" src="http://images.lifesambrosia.com/food/1200/risotto-milanese.jpg" class="image"></iron-image>
+		        <paper-card class="papercard" image="" ui:field="RicettaCard">          
+				            <iron-image sizing="cover" class="image" ui:field="immagine">
+				            	
+				            </iron-image>
 				            
 				            <div class="cardtitlespace">
-				            	<div class="cardtitle" ui:field="titolo">Card Title</div>
+				            	<div class="cardtitle" ui:field="titolo"></div>
 				            </div>
 										<table class="tg">
 										  <tr>
 										    <td>Difficoltà</td>
-										    <td class="riepilogo">Media</td>
+										    <td class="riepilogo" ui:field="difficolta"></td>
 										  </tr>
 										  
 										  <tr>
 										    <td>Preparazione</td>
-										    <td class="riepilogo">50 minuti</td>
+										    <td class="riepilogo" ui:field="preparazione"></td>
 										  </tr>
 										  <tr>
 										  <td>Cottura</td>
-										    <td class="riepilogo">1:30 h</td>
+										    <td class="riepilogo" ui:field="cottura"></td>
 										  </tr>
 										  <tr>
 										    <td>Dosi Per</td>
-										     <td class="riepilogo">5 Persone</td>
+										     <td class="riepilogo" ui:field="dosi"></td>
 										  </tr>
 										</table>
-				   			<hr></hr>
+				   			<hr style="margin:2px"></hr>
 				   							<table class="tg PrezzoFinale">
 										 		 <tr>
 										 			 <td class="Costo">Costo</td>
-										 			 <td class="riepilogo prezzo" >2€</td>
+										 			 <td class="riepilogo prezzo" ui:field="costo" >2€</td>
 										 		 </tr>
 				   							
 				   							</table>
 				   							
 				   			<paper-ripple/>
 				</paper-card>
-          
+				
+				<paper-dialog ui:field="RicettaDettagli" entry-animation="fade-in-animation" class="dialog">
+					<iron-image sizing="cover" class="imageDescrizione" ui:field="immagineDettagli"/>
+	
+						
+				           
+				            	<div class="TitoloRicettaDettagli" >
+				            		<div class="titolocenter">Risotto al vapore</div>
+				            	 </div>
+				           
+				            
+						<table class="dettagliTable" ui:field="IngredientiTable"> 
+							<tr>
+								<td class="dettagliTableTD">Escludi</td>
+								<td class="dettagliTableTD">Ingrediente</td>
+								<td class="dettagliTableTD">Prodotto</td>
+								<td class="dettagliTableTD">costo</td>
+							</tr>
+							<tr>
+								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
+								<td class="dettagliTableTD"> Riso</td>
+								<td class="dettagliTableTD">
+										<paper-dropdown-menu label="Prodotto">
+											  <paper-menu class="dropdown-content" selected="0">
+											    <paper-item>Riso Flora</paper-item>
+											    <paper-item>Riso Scotti</paper-item>
+											    <paper-item>Riso Peppe</paper-item>
+											    <paper-item>Riso Almadino</paper-item>
+											  </paper-menu>
+										</paper-dropdown-menu>
+								</td>
+								<td class="dettagliTableTD"> 2£</td>
+							</tr>
+							
+				
+							<tr>
+								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
+								<td class="dettagliTableTD"> Riso</td>
+								<td class="dettagliTableTD">
+										<paper-dropdown-menu label="Prodotto">
+											  <paper-menu class="dropdown-content" selected="0">
+											    <paper-item>Riso Flora</paper-item>
+											    <paper-item>Riso Scotti</paper-item>
+											    <paper-item>Riso Peppe</paper-item>
+											    <paper-item>Riso Almadino</paper-item>
+											  </paper-menu>
+										</paper-dropdown-menu>
+								</td>
+								<td class="dettagliTableTD"> 2£</td>
+							</tr>
+							<tr>
+								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
+								<td class="dettagliTableTD"> Riso</td>
+								<td class="dettagliTableTD">
+										<paper-dropdown-menu label="Prodotto">
+											  <paper-menu class="dropdown-content" selected="0">
+											    <paper-item>Riso Flora</paper-item>
+											    <paper-item>Riso Scotti</paper-item>
+											    <paper-item>Riso Peppe</paper-item>
+											    <paper-item>Riso Almadino</paper-item>
+											  </paper-menu>
+										</paper-dropdown-menu>
+								</td>
+								<td class="dettagliTableTD"> 2£</td>
+							</tr>
+							
+							<tr class="totale">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="dettagliTableTD">Totale</td>
+							</tr>
+							
+							<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="dettagliTableTD">2£</td>
+							</tr>
+							
+							<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello">Aggiungi A Carrello</paper-button></td>
+							</tr>
+						</table>
+						
+                </paper-dialog>
+          		
       </div>
     </ui:UiBinder>

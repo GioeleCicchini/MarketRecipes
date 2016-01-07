@@ -9,7 +9,7 @@ import com.vaadin.polymer.elemental.EventListener;
 
 import marres.client.AppUtils;
 import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
-import marres.client.dto.DCategoriaDTO;
+import marres.shared.dto.DCategoriaDTO;
 
 
 
