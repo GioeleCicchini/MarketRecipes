@@ -4,8 +4,10 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.vaadin.polymer.Polymer;
 import com.vaadin.polymer.elemental.Function;
+import com.vaadin.polymer.iron.element.IronCollapseElement;
 import com.vaadin.polymer.iron.element.IronIconElement;
 import com.vaadin.polymer.iron.element.IronImageElement;
+import com.vaadin.polymer.iron.element.IronSelectorElement;
 import com.vaadin.polymer.paper.element.*;
 import java.util.Arrays;
 
@@ -32,7 +34,9 @@ public class Entry implements EntryPoint {
 	                PaperIconButtonElement.SRC,
 	                PaperDropdownMenuElement.SRC,
 	                PaperMenuElement.SRC,
-	                PaperItemElement.SRC
+	                PaperItemElement.SRC,
+	                IronSelectorElement.SRC,
+	                IronCollapseElement.SRC
 
         ), new Function() {
             public Object call(Object arg) {

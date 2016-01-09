@@ -154,84 +154,45 @@
 				            		<div class="titolocenter">Risotto al vapore</div>
 				            	 </div>
 				           
-				            
-						<table class="dettagliTable" ui:field="IngredientiTable"> 
-							<tr>
-								<td class="dettagliTableTD">Escludi</td>
-								<td class="dettagliTableTD">Ingrediente</td>
-								<td class="dettagliTableTD">Prodotto</td>
-								<td class="dettagliTableTD">costo</td>
-							</tr>
-							<tr>
-								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
-								<td class="dettagliTableTD"> Riso</td>
-								<td class="dettagliTableTD">
-										<paper-dropdown-menu label="Prodotto">
-											  <paper-menu class="dropdown-content" selected="0">
-											    <paper-item>Riso Flora</paper-item>
-											    <paper-item>Riso Scotti</paper-item>
-											    <paper-item>Riso Peppe</paper-item>
-											    <paper-item>Riso Almadino</paper-item>
-											  </paper-menu>
-										</paper-dropdown-menu>
-								</td>
-								<td class="dettagliTableTD"> 2£</td>
-							</tr>
-							
-				
-							<tr>
-								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
-								<td class="dettagliTableTD"> Riso</td>
-								<td class="dettagliTableTD">
-										<paper-dropdown-menu label="Prodotto">
-											  <paper-menu class="dropdown-content" selected="0">
-											    <paper-item>Riso Flora</paper-item>
-											    <paper-item>Riso Scotti</paper-item>
-											    <paper-item>Riso Peppe</paper-item>
-											    <paper-item>Riso Almadino</paper-item>
-											  </paper-menu>
-										</paper-dropdown-menu>
-								</td>
-								<td class="dettagliTableTD"> 2£</td>
-							</tr>
-							<tr>
-								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
-								<td class="dettagliTableTD"> Riso</td>
-								<td class="dettagliTableTD">
-										<paper-dropdown-menu label="Prodotto">
-											  <paper-menu class="dropdown-content" selected="0">
-											    <paper-item>Riso Flora</paper-item>
-											    <paper-item>Riso Scotti</paper-item>
-											    <paper-item>Riso Peppe</paper-item>
-											    <paper-item>Riso Almadino</paper-item>
-											  </paper-menu>
-										</paper-dropdown-menu>
-								</td>
-								<td class="dettagliTableTD"> 2£</td>
-							</tr>
-							
-							<tr class="totale">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="dettagliTableTD">Totale</td>
-							</tr>
-							
-							<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="dettagliTableTD">2£</td>
-							</tr>
-							
-							<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello">Aggiungi A Carrello</paper-button></td>
-							</tr>
-						</table>
+				         <div>
+				         	<table class="dettagliTable">
+				         		<tr>
+										<td class="dettagliTableTD">Escludi</td>
+										<td class="dettagliTableTD">Ingrediente</td>
+										<td class="dettagliTableTD">Prodotto</td>
+										<td class="dettagliTableTD">costo</td>
+								</tr>
+				         	</table>
+				         </div>   
+						<div ui:field="IngredientiTable"></div>
 						
+						
+						<div>
+							<table class="dettagliTable">
+							
+								<tr class="totale">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="dettagliTableTD">Totale</td>
+								</tr>
+								
+								<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="dettagliTableTD" ui:field="totale"></td>
+								</tr>
+								
+								<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello">Aggiungi A Carrello</paper-button></td>
+								</tr>
+							
+							</table>
+						</div>
                 </paper-dialog>
           		
       </div>

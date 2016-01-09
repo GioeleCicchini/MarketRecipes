@@ -15,6 +15,12 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <class-b>marres.shared.dto.DCategoriaDTO</class-b>   
   </mapping>
   
+  <mapping> 
+    <class-a>marres.shared.domain.DIngrediente</class-a>
+    <class-b>marres.shared.dto.DIngredienteDTO</class-b>   
+  </mapping>
+  
+  
 <!-- 
   <mapping> 
     <class-a>marres.shared.domain.DCarrello</class-a>
@@ -37,10 +43,6 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <class-b>marres.shared.dto.DIndirizzoDTO</class-b>   
   </mapping>
   
-  <mapping> 
-    <class-a>marres.shared.domain.DIngrediente</class-a>
-    <class-b>marres.shared.dto.DIngredienteDTO</class-b>   
-  </mapping>
   
   <mapping> 
     <class-a>marres.shared.domain.DNegozio</class-a>

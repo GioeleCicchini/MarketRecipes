@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.dom.client.DivElement;
-
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Panel;
 import marres.client.Events.EventDown.DisplayCategoriaEvent;
 import marres.client.Events.EventDown.DisplayIngredienteEvent;
@@ -29,6 +29,7 @@ import marres.shared.domain.DCategoria;
 import marres.shared.domain.DRicetta;
 import marres.shared.dto.DCategoriaDTO;
 import marres.shared.dto.DIngredienteDTO;
+import marres.shared.dto.DProdottoDTO;
 import marres.shared.dto.DRicettaDTO;
 
 public class AppController {
@@ -90,11 +91,17 @@ public class AppController {
 
 			@Override
 			public void OnAggiungiIngrediente(AggiungiIngredienteEvent event) {
+			
 				
 				DIngredienteDTO Ingrediente = event.getIngrediente();
+				List<DProdottoDTO> prodotti = event.getProdotti();
 				VIngredienteItem Vingrediente = new VIngredienteItem();
+			
 				IngredienteItemPresenter ingredientepresenter = new IngredienteItemPresenter(Vingrediente);
+				
 				ingredientepresenter.setIngredienteItem(Ingrediente);
+				ingredientepresenter.setProdotti(prodotti);
+				
 				DivElement ingredienteDiv = Vingrediente.getDivElement();
 				AppUtils.EVENT_BUS.fireEvent(new DisplayIngredienteEvent(ingredienteDiv));
 				

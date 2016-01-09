@@ -1,10 +1,13 @@
 package marres.client.Events.EventUp;
 
+import java.util.List;
+
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 
 import marres.shared.dto.DCategoriaDTO;
 import marres.shared.dto.DIngredienteDTO;
+import marres.shared.dto.DProdottoDTO;
 
 public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventHandler> {
 
@@ -12,9 +15,11 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 	
 	
 	private DIngredienteDTO ingrediente;		
+	private List<DProdottoDTO> prodotti;	
 	
-	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente) {
-		this.ingrediente = ingrediente;
+	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente,List<DProdottoDTO> prodotti) {
+		this.ingrediente = Ingrediente;
+		this.prodotti = prodotti;
 	}
 	
 	@Override
@@ -31,6 +36,13 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 	public DIngredienteDTO getIngrediente(){
 		return this.ingrediente;
 	}
+
+	public List<DProdottoDTO> getProdotti() {
+		return prodotti;
+	}
+
+	
+	
 
 	
 }

@@ -28,6 +28,8 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 	  @UiField Element RicettaCard;
 	  @UiField PaperDialogElement RicettaDettagli;
 	  @UiField Element IngredientiTable;
+	  @UiField Element totale;
+	  
 	  
 	 private final DivElement element;
 	 
@@ -94,6 +96,21 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		this.IngredientiTable.appendChild(ingrediente);
 		
 	}
+
+	@Override
+	public void Clear() {
+		this.IngredientiTable.setInnerHTML("");
+		
+	}
+
+	@Override
+	public void DisplaySomma(float somma) {
+		somma = (float) (Math.floor(somma * 100) / 100);
+		String totale = String.valueOf(somma);
+		this.totale.setInnerHTML(totale+"€");
+		
+	}
+
 	
 	
 	
