@@ -74,14 +74,27 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 	}
 
 	@Override
-	public void setProdotti(List<DProdottoDTO> prodotti) {
-		this.ProdottiList=prodotti;
+	public void setProdotti(List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato) {
+		this.ProdottiList=prodotti;	
+		int i=0;
+		int index = -1;
+		if(prodottoselezionato != null){
+			for(DProdottoDTO prodotto : ProdottiList){
+				if(prodotto.getId() == prodottoselezionato.getId()){
+					index = i;
+				}
+				i=i+1;
+			}
+		}
+		else{
+			index= 0;
+		}
 		for(DProdottoDTO prodotto :prodotti){
 				String item = "<div>"+prodotto.getNome()+"<p>"+"<b>Prezzo:</b>"+prodotto.getPrezzo()+"<div>";
 				this.prodotti.setInnerHTML(this.prodotti.getInnerHTML()+item);
 		}
 		if(prodotti.size() != 0){
-		setProdottoSelezionato("0");
+		setProdottoSelezionato(index);
 		}
 	}
 	
@@ -102,8 +115,8 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 	}
 
 	@Override
-	public void setProdottoSelezionato(String index) {
-		int indice = Integer.parseInt(index);
+	public void setProdottoSelezionato(int index) {
+		int indice = index;
 		
 		this.apriProdottibutton.setInnerHTML(this.ProdottiList.get(indice).getNome());
 		this.prezzo.setInnerHTML(this.ProdottiList.get(indice).getPrezzo()+"€");

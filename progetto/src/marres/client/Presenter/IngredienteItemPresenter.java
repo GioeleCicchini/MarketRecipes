@@ -25,6 +25,7 @@ public class IngredienteItemPresenter implements Presenter {
 
 	private Display view;
 	private DIngredienteDTO Ingrediente;
+	private DProdottoDTO ProdottoSelezionato;
 	
 	public interface Display {
 		public DivElement getDivElement();
@@ -32,11 +33,11 @@ public class IngredienteItemPresenter implements Presenter {
 		public Widget asWidget();
 		public void setPresenter(IngredienteItemPresenter presenter);
 		public void setIngrediente(String Nomeingrediente);
-		public void setProdotti(List<DProdottoDTO> prodotti);
+		public void setProdotti(List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato);
 		public Element getprodotto();
 		public Element getApriProdotti();
 		public void ApriProdotti();
-		public void setProdottoSelezionato(String prodotto);
+		public void setProdottoSelezionato(int prodotto);
 	}
 	
 	
@@ -65,7 +66,8 @@ public class IngredienteItemPresenter implements Presenter {
 			@Override
 			public void handleEvent(Event event) {
 				IronSelectorElement elemento =(IronSelectorElement) view.getprodotto();
-				view.setProdottoSelezionato(elemento.getSelected());
+				view.setProdottoSelezionato(Integer.parseInt(elemento.getSelected()));
+				
 			}
 			
 		});
@@ -90,9 +92,11 @@ public class IngredienteItemPresenter implements Presenter {
 		
 	}
 	
-	public void setProdotti(List<DProdottoDTO> prodotti){
+	public void setProdotti(List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato){
+		if(prodottoselezionato != null){
+		}
 		
-			view.setProdotti(prodotti);
+			view.setProdotti(prodotti,prodottoselezionato);
 	}
 
 

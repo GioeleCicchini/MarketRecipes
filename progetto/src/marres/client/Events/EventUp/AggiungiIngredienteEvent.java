@@ -16,10 +16,12 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 	
 	private DIngredienteDTO ingrediente;		
 	private List<DProdottoDTO> prodotti;	
+	private DProdottoDTO prodottoselezionato;	
 	
-	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente,List<DProdottoDTO> prodotti) {
+	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente,List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato) {
 		this.ingrediente = Ingrediente;
 		this.prodotti = prodotti;
+		this.prodottoselezionato = prodottoselezionato;
 	}
 	
 	@Override
@@ -39,6 +41,9 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 
 	public List<DProdottoDTO> getProdotti() {
 		return prodotti;
+	}
+	public DProdottoDTO getProdottoSelezionato(){
+		return this.prodottoselezionato;
 	}
 
 	

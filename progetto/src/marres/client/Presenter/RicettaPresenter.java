@@ -27,6 +27,7 @@ import com.vaadin.polymer.paper.element.PaperFabElement;
 import marres.client.AppUtils;
 import marres.client.Events.EventDown.DisplayIngredienteEvent;
 import marres.client.Events.EventDown.DisplayIngredienteEventHandler;
+import marres.client.Events.EventMiddle.AggiungiACarrelloEvent;
 import marres.client.Events.EventMiddle.AggiungiATotaleEvent;
 import marres.client.Events.EventMiddle.AggiungiATotaleEventHandler;
 import marres.client.Events.EventUp.AggiungiCategoriaEvent;
@@ -53,6 +54,7 @@ public class RicettaPresenter implements Presenter {
 		public DivElement getDivElement();
 		public void setPresenter(RicettaPresenter RicettaPresenter);
 		public Element getApriRicetta();
+		public Element getAggiungiACarrelloButton();
 		public void ApriRicetta();
 		public Widget asWidget(); 
 		public void AggiungiIngredienti(DivElement ingrediente);
@@ -63,8 +65,9 @@ public class RicettaPresenter implements Presenter {
 	
 	public RicettaPresenter(Display view){
 		this.view = view;
-		InizializzaEventiView();
+		InizializzaEventiView();	
 		bind();
+		
 	}
 	
 	@Override
@@ -74,6 +77,7 @@ public class RicettaPresenter implements Presenter {
 
 			@Override
 			public void OnAggiungiATotale(AggiungiATotaleEvent event) {
+			
 				DProdottoDTO prodotto = event.getProdotto();
 				int i=0;
 				int index=0;
@@ -93,8 +97,9 @@ public class RicettaPresenter implements Presenter {
 					ProdottiSelezionati.add(prodotto);
 				}
 				
-				AggiornaTotale();
 				
+				AggiornaTotale();
+			
 				
 			}
 			
@@ -111,12 +116,21 @@ public class RicettaPresenter implements Presenter {
 		this.view.getApriRicetta().addEventListener("click", new EventListener() {
 			@Override
 			public void handleEvent(Event event) {
-				view.Clear();
 				view.ApriRicetta();
+				}
+		});
+		
+		this.view.getAggiungiACarrelloButton().addEventListener("click", new EventListener(){
+
+			@Override
+			public void handleEvent(Event event) {
+		
 				
-				PrelevaIngredienti();
+				AppUtils.EVENT_BUS.fireEvent(new AggiungiACarrelloEvent(Ricetta,ProdottiSelezionati));
 				
 			}
+			
+			
 		});
 		
 		
@@ -127,7 +141,6 @@ public class RicettaPresenter implements Presenter {
 	@Override
 	public void bind() {
 		view.setPresenter(this);
-
 	}
 	
 	public void AggiornaTotale(){
@@ -136,7 +149,9 @@ public class RicettaPresenter implements Presenter {
 			float prezzo =Float.parseFloat(prodotto.getPrezzo());
 			somma=somma+prezzo;
 		}
+		
 		view.DisplaySomma(somma);
+		
 	}
 	
 	public void PrelevaIngredienti(){
@@ -173,13 +188,36 @@ public class RicettaPresenter implements Presenter {
 	
 	public void setRicetta(DRicettaDTO ricetta){
 		this.Ricetta = ricetta;
+
+			view.setRicetta(ricetta.getNome(), ricetta.getDifficolta(),ricetta.getPreparazione(),ricetta.getCottura(),ricetta.getDosi(),ricetta.getCosto(), ricetta.getImage());
 	
-		view.setRicetta(ricetta.getNome(), ricetta.getDifficolta(),ricetta.getPreparazione(),ricetta.getCottura(),ricetta.getDosi(),ricetta.getCosto(), ricetta.getImage());
 		
+		PrelevaIngredienti();
 	}
 
 	public void AggiungiIngrediente (DIngredienteDTO ingrediente ,List<DProdottoDTO> prodotti){
-		AppUtils.EVENT_BUS.fireEvent(new AggiungiIngredienteEvent(ingrediente,prodotti));
+		
+		int i=0;
+		int index= -1;
+		if(ProdottiSelezionati.size() != 0){
+		for(DProdottoDTO prodotto : ProdottiSelezionati){
+			for(DProdottoDTO prodottoArrivato : prodotti){
+				if(prodotto.getId()==prodottoArrivato.getId()){
+					index = i;
+			
+				}
+			}
+			i=i+1;
+		} 
+		}
+		if(index != -1){
+			
+		AppUtils.EVENT_BUS.fireEvent(new AggiungiIngredienteEvent(ingrediente,prodotti,ProdottiSelezionati.get(index)));
+		}
+		else{
+		
+		AppUtils.EVENT_BUS.fireEvent(new AggiungiIngredienteEvent(ingrediente,prodotti,null));
+		}
 	}
 	
 	
@@ -223,5 +261,14 @@ public class RicettaPresenter implements Presenter {
         
 	}
 	
+	public  List<DProdottoDTO> getProdottiSelezionati(){
+		return this.ProdottiSelezionati;
+	
+	}
+	public void setProdottiSelezionati(List<DProdottoDTO> prodotti){
+		this.ProdottiSelezionati = prodotti;
+		
+	}
+
 
 }

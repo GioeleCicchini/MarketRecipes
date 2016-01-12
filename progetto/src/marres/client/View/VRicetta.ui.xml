@@ -137,7 +137,7 @@
 				   							<table class="tg PrezzoFinale">
 										 		 <tr>
 										 			 <td class="Costo">Costo</td>
-										 			 <td class="riepilogo prezzo" ui:field="costo" >2€</td>
+										 			 <td class="riepilogo prezzo" ui:field="costo" ></td>
 										 		 </tr>
 				   							
 				   							</table>
@@ -188,7 +188,7 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello">Aggiungi A Carrello</paper-button></td>
+								<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello" ui:field="AggiungiACarrello">Aggiungi A Carrello</paper-button></td>
 								</tr>
 							
 							</table>

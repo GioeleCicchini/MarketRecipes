@@ -1,8 +1,11 @@
 package marres.client.View;
+import com.github.gwtbootstrap.datetimepicker.client.ui.DateTimeBox;
+import com.github.gwtbootstrap.datetimepicker.client.ui.base.PickerPosition;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.vaadin.polymer.elemental.*;
@@ -24,12 +27,18 @@ public class Main extends Composite implements Display {
   @UiField HTMLElement categorie;
   @UiField PaperFabElement ApriCarrello;
   @UiField PaperDialogElement Carrello;
+  @UiField HTMLElement CarrelloItem;
+  @UiField DateTimeBox data;
+  @UiField Element chiudiCarrello;
+  @UiField Element totaleCarrello;
 
-
+  public static PickerPosition picker;
+  
   public Main() {
     initWidget(ourUiBinder.createAndBindUi(this));
   }
   
+
 @Override
 public void setPresenter(MainPresenter presenter) {
  this.presenter = presenter;
@@ -38,9 +47,13 @@ public void setPresenter(MainPresenter presenter) {
 
 @Override
 public void AggiungiContenutiPrincipali(DivElement ricetta) {
-	ContenutiPrincipali.appendChild(ricetta);
+	ContenutiPrincipali.appendChild(ricetta);	
 }
 
+@Override
+public void AggiungiACarrello(DivElement ricetta) {
+	CarrelloItem.appendChild(ricetta);
+}
 @Override
 public void AggiungiContenutiMenu(DivElement categoria) {
 	categorie.appendChild(categoria);
@@ -62,10 +75,31 @@ public void EliminaContenutiMenu() {
 public PaperFabElement getApriCarrello() {
 	return ApriCarrello;
 }
+
+@Override
+public Element getChiudiCarrello() {
+	return chiudiCarrello;
+}
+
+
 @Override
 public void ApriCarrello(){
 	Carrello.open();
 }
+@Override
+public void ChiudiCarrello(){
+	Carrello.close();
+}
+
+
+@Override
+public void AggiornaTotaleCarrello(float totale) {
+	this.totaleCarrello .setInnerHTML("Totale: "+String.valueOf((float) (Math.floor(totale * 100) / 100))+"€");
+	
+}
+
+
+
 
 
 

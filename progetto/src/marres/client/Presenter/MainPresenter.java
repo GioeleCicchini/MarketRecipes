@@ -9,21 +9,28 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
+import com.vaadin.polymer.elemental.Element;
 import com.vaadin.polymer.elemental.Event;
 import com.vaadin.polymer.elemental.EventListener;
 import com.vaadin.polymer.paper.element.PaperFabElement;
 import marres.client.AppUtils;
 import marres.client.Events.EventDown.DisplayCategoriaEvent;
 import marres.client.Events.EventDown.DisplayCategoriaEventHandler;
+import marres.client.Events.EventDown.DisplayRicettaCarrelloEvent;
+import marres.client.Events.EventDown.DisplayRicettaCarrelloEventHandler;
 import marres.client.Events.EventDown.DisplayRicettaEvent;
 import marres.client.Events.EventDown.DisplayRicettaEventHandler;
+import marres.client.Events.EventMiddle.AggiungiACarrelloEvent;
+import marres.client.Events.EventMiddle.AggiungiACarrelloEventHandler;
 import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
 import marres.client.Events.EventMiddle.CambiaCategoriaEventHandler;
 import marres.client.Events.EventUp.AggiungiCategoriaEvent;
+import marres.client.Events.EventUp.AggiungiRicettaCarrelloEvent;
 import marres.client.Events.EventUp.AggiungiRicettaEvent;
 import marres.client.RPC.MainService;
 import marres.client.RPC.MainServiceAsync;
 import marres.shared.dto.DCategoriaDTO;
+import marres.shared.dto.DProdottoDTO;
 import marres.shared.dto.DRicettaDTO;
 
 
@@ -33,6 +40,7 @@ public class MainPresenter implements Presenter {
 	private MainServiceAsync MainSvc = GWT.create(MainService.class);
 	private DCategoriaDTO categoria;
 	
+	private List<DProdottoDTO> ProdottiCarrello = new ArrayList<DProdottoDTO>();
 	
 	private Display view;
 
@@ -40,12 +48,16 @@ public class MainPresenter implements Presenter {
 	public interface Display {
 		public void AggiungiContenutiPrincipali(DivElement ricetta);
 		public void AggiungiContenutiMenu(DivElement categoria);
+		public void AggiungiACarrello(DivElement ricetta);
 		public void EliminaContenutiPrincipali();
 		public void EliminaContenutiMenu();
 		public void setPresenter(MainPresenter presenter);
 		public PaperFabElement getApriCarrello();
+		public Element getChiudiCarrello();
 		public void ApriCarrello();
+		public void ChiudiCarrello();
 		public Widget asWidget();
+		public void AggiornaTotaleCarrello(float totale);
 	}
 	
 	public MainPresenter(Display view){
@@ -63,6 +75,8 @@ public class MainPresenter implements Presenter {
 	@Override
 	public void InizializzaEventiView(){
 		
+		
+		
 		this.view.getApriCarrello().addEventListener("click", new EventListener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -70,10 +84,26 @@ public class MainPresenter implements Presenter {
 			}
 		});
 	
+		this.view.getChiudiCarrello().addEventListener("click", new EventListener(){
+
+			@Override
+			public void handleEvent(Event event) {
+				view.ChiudiCarrello();	
+			}
+			
+		});
+		
 		AppUtils.EVENT_BUS.addHandler(DisplayRicettaEvent.TYPE, new DisplayRicettaEventHandler(){
 			@Override
 			public void OnDisplayRicetta(DisplayRicettaEvent event) {
 				view.AggiungiContenutiPrincipali(event.getElement());
+			}
+		});
+		
+		AppUtils.EVENT_BUS.addHandler(DisplayRicettaCarrelloEvent.TYPE, new DisplayRicettaCarrelloEventHandler(){
+			@Override
+			public void OnDisplayRicettaCarrello(DisplayRicettaCarrelloEvent event) {
+				view.AggiungiACarrello(event.getElement());
 			}
 		});
 		
@@ -90,6 +120,29 @@ public class MainPresenter implements Presenter {
 				view.EliminaContenutiPrincipali();
 				PrelevaRicette(event.getCategoria());
 			}
+		});
+		
+		AppUtils.EVENT_BUS.addHandler(AggiungiACarrelloEvent.TYPE, new AggiungiACarrelloEventHandler(){
+
+			@Override
+			public void OnAggiungiACarrello(AggiungiACarrelloEvent event) {
+				
+				for(DProdottoDTO prodotto :event.getProdotti() ){
+					ProdottiCarrello.add(prodotto);
+				}
+				
+				float somma=0;
+				for(DProdottoDTO prodotto : ProdottiCarrello){
+					somma=somma+Float.parseFloat(prodotto.getPrezzo());
+				}
+				view.AggiornaTotaleCarrello(somma);
+				
+				AppUtils.EVENT_BUS.fireEvent(new AggiungiRicettaCarrelloEvent(event.getRicetta(),event.getProdotti()));
+				
+				
+			}
+			
+		
 		});
 		
 	}
@@ -146,6 +199,8 @@ public class MainPresenter implements Presenter {
 		return null;
 	}
 
+	
+	
 	public void AggiungiRicetta (DRicettaDTO ricetta) {
 		AppUtils.EVENT_BUS.fireEvent(new AggiungiRicettaEvent(ricetta));
 	}

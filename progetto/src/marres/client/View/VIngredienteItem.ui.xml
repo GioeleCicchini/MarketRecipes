@@ -50,7 +50,7 @@
 							</table>
 				
 				<paper-dialog  entry-animation="fade-in-animation" class="dialog-sceltaprodotti" ui:field="apriProdotti">
-														<iron-selector ui:field="prodotti" class="selector">
+													<iron-selector ui:field="prodotti" class="selector">
 														
 													</iron-selector>
 				</paper-dialog>

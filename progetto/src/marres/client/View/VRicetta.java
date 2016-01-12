@@ -29,6 +29,7 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 	  @UiField PaperDialogElement RicettaDettagli;
 	  @UiField Element IngredientiTable;
 	  @UiField Element totale;
+	  @UiField Element AggiungiACarrello;
 	  
 	  
 	 private final DivElement element;
@@ -69,13 +70,13 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		this.cottura.setInnerHTML(cottura);
 		this.dosi.setInnerHTML(dosi);
 		this.costo.setInnerHTML(costo+"€");
-		
 		this.immagine.setSrc(immagine);
 		this.immagineDettagli.setSrc(immagine);
 		
 	}
 
 
+	
 
 	@Override
 	public void ApriRicetta() {
@@ -108,7 +109,13 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 		somma = (float) (Math.floor(somma * 100) / 100);
 		String totale = String.valueOf(somma);
 		this.totale.setInnerHTML(totale+"€");
+		this.costo.setInnerHTML(totale+"€");
 		
+	}
+
+	@Override
+	public Element getAggiungiACarrelloButton() {
+		return this.AggiungiACarrello;
 	}
 
 	

@@ -28,6 +28,50 @@
             background-color: #EEEEEE;
             line-height:25px;
             }
+            .titoloCarrello{
+            font-size: 40px;
+            }
+            .date{
+            position: absolute;
+            top:0px;
+            left:400px;
+            }
+            .dataconsegna{
+             padding-bottom:10px;
+            font-size: 30px;
+              font-weight: bold;
+            }
+            .carrellodialog{
+            	width:60%;
+
+				margin:0px;
+				position: fixed;
+		        top: 50px;
+           		 padding:20px;
+            }
+            
+            .ConfermaOrdine{
+            	 background-color: rgba(229, 57, 53, 1);
+		 		color:white;
+		 }
+		 .Carrelloitem{
+		 padding-bottom=30px;
+		 }
+		 .primo{
+		 width:200px;
+		 }
+         .padding{
+         width:200px;
+         font-size:20px;
+        font-weight: bold;
+         }
+         .decentrata{
+         position:relative;
+         left:330px;
+         }
+         .titolopadding{
+         padding-right:150px;
+         }
         </style>
         <paper-drawer-panel ui:field="drawerPanel">
             <div drawer="">
@@ -51,22 +95,72 @@
                 <paper-fab ui:field="ApriCarrello" icon="shopping-cart" title="Carrello" class="add"/>
             </div>
         </paper-drawer-panel>
-        <paper-dialog ui:field="Carrello"
-                entry-animation="fade-in-animation"
-                class="dialog" modal="">
-    <h2>Add Item</h2>
-    <paper-input ui:field="titleInput" label="Title" required=""
-                 auto-validate="" error-message="required input!"/>
-    <div class="textarea-container iron-autogrow-textarea">
-        <paper-textarea ui:field="descriptionInput" label="Notes"/>
-    </div>
-    <div class="buttons">
-        <paper-button dialog-dismiss="">Cancel</paper-button>
-        <paper-button ui:field="confirmAddButton"
-                      dialog-confirm="">OK</paper-button>
-    </div>
-    <div>  <b2:DateTimeBox format="dd/mm/yyyy hh:ii" autoClose="true" /> </div>
-   
-  </paper-dialog>
+        <paper-dialog ui:field="Carrello" entry-animation="fade-in-animation" class="carrellodialog main" modal="">
+   							
+    						
+    						
+    						<div>
+  								 <table>
+   									<tr>
+   										<td class="padding titolopadding"> 
+   											<div class="titoloCarrello"> Carrello </div>
+   										</td>
+										<td class=" padding ">
+										<div class="dataconsegna">Data della consegna</div>
+										</td>
+										<td class="padding ">    						
+				    							<b2:DateTimeBox format="dd/mm/yyyy hh:ii" autoClose="true"  ui:field="data"/> 
+    									</td>
+								
+									</tr>
+							  	</table>
+   							</div>
+   							<div>
+  								<table class="decentrata">
+   									<tr>
+										<td class="padding">Quantità</td>
+										<td class="padding">Ricetta</td>
+										<td class="padding">Prodotti Scelti</td>
+										<td class="padding" style="width: 100px;"> Costo</td>
+									</tr>
+							  	</table>
+  							</div>
+  								
+    						<div ui:field="CarrelloItem" class="Carrelloitem">
+    						</div>
+	    					
+  								
+  								 <table  class="top">
+   									<tr>
+   									
+										<td class="padding" style="padding-right:370px; font-size:30px;" ui:field="totaleCarrello">Totale: </td>
+										<td class="padding" style="width: 0px; padding-right:0px">
+										<paper-button class="ConfermaOrdine" ui:field="chiudiCarrello">Chiudi Carrello</paper-button>
+										</td>
+										<td class="padding" style="width: 225px;">
+											<paper-button class="ConfermaOrdine" >Conferma Ordine</paper-button>
+										</td>
+									</tr>
+							  	</table>
+ 		 </paper-dialog>
     </g:HTMLPanel>
 </ui:UiBinder>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
