@@ -5,9 +5,12 @@ import java.util.List;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 
+import marres.client.Presenter.Presenter;
+import marres.client.Presenter.RicettaPresenter;
 import marres.shared.dto.DCategoriaDTO;
 import marres.shared.dto.DIngredienteDTO;
 import marres.shared.dto.DProdottoDTO;
+import marres.shared.dto.DRicettaDTO;
 
 public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventHandler> {
 
@@ -15,13 +18,12 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 	
 	
 	private DIngredienteDTO ingrediente;		
-	private List<DProdottoDTO> prodotti;	
-	private DProdottoDTO prodottoselezionato;	
+	private RicettaPresenter presenter;
 	
-	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente,List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato) {
+	public AggiungiIngredienteEvent(DIngredienteDTO Ingrediente,RicettaPresenter presenter) {
 		this.ingrediente = Ingrediente;
-		this.prodotti = prodotti;
-		this.prodottoselezionato = prodottoselezionato;
+		this.presenter = presenter;
+		
 	}
 	
 	@Override
@@ -39,11 +41,8 @@ public class AggiungiIngredienteEvent extends GwtEvent<AggiungiIngredienteEventH
 		return this.ingrediente;
 	}
 
-	public List<DProdottoDTO> getProdotti() {
-		return prodotti;
-	}
-	public DProdottoDTO getProdottoSelezionato(){
-		return this.prodottoselezionato;
+	public RicettaPresenter getPresenter(){
+		return this.presenter;
 	}
 
 	

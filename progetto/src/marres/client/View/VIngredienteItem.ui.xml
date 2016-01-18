@@ -10,7 +10,9 @@
 		background-color:#FF5722;
 		}
 		.dialog-sceltaprodotti{
-		background-color:#607D8B;
+		posizion:relative;
+		left:300px;
+		background-color:#EF6C00;
 		color:white;
 		width:600px;
 		
@@ -20,7 +22,7 @@
 		width:100%;
 		height:60px;
 		padding:0.7em 0.57em;
-		background-color:#607D8B;
+		background-color:#E65100;
 		color: white;
 		font-size:20px;
 		}
@@ -35,7 +37,7 @@
 		
 						<table class="dettagliTable">
 							<tr>
-								<td class="dettagliTableTD"><paper-checkbox></paper-checkbox></td>
+								<td class="dettagliTableTD"><paper-checkbox ui:field="escludi"></paper-checkbox></td>
 								<td class="dettagliTableTD" ui:field="nomeIngrediente"> Riso</td>
 								<td class="dettagliTableTD">
 										

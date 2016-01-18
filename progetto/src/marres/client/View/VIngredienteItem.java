@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.polymer.elemental.Element;
 import com.vaadin.polymer.iron.element.IronSelectorElement;
+import com.vaadin.polymer.paper.element.PaperCheckboxElement;
 import com.vaadin.polymer.paper.element.PaperDialogElement;
 import com.vaadin.polymer.paper.element.PaperItemElement;
 import com.vaadin.polymer.paper.element.PaperMenuElement;
@@ -30,7 +31,7 @@ import com.vaadin.polymer.paper.widget.PaperItem;
 public class VIngredienteItem extends Composite implements IngredienteItemPresenter.Display {
 
 	IngredienteItemPresenter presenter;
-	List<DProdottoDTO> ProdottiList = new ArrayList<DProdottoDTO>();
+	
 	
 	
 	private static VIngredienteItemUiBinder uiBinder = GWT.create(VIngredienteItemUiBinder.class);
@@ -43,6 +44,7 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 	@UiField PaperDialogElement apriProdotti;
 	@UiField Element apriProdottibutton;
 	@UiField Element prezzo;
+	@UiField PaperCheckboxElement escludi;
 	
 	interface VIngredienteItemUiBinder extends UiBinder<DivElement, VIngredienteItem> {
 	}
@@ -59,7 +61,6 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -75,27 +76,11 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 
 	@Override
 	public void setProdotti(List<DProdottoDTO> prodotti,DProdottoDTO prodottoselezionato) {
-		this.ProdottiList=prodotti;	
-		int i=0;
-		int index = -1;
-		if(prodottoselezionato != null){
-			for(DProdottoDTO prodotto : ProdottiList){
-				if(prodotto.getId() == prodottoselezionato.getId()){
-					index = i;
-				}
-				i=i+1;
-			}
-		}
-		else{
-			index= 0;
-		}
 		for(DProdottoDTO prodotto :prodotti){
 				String item = "<div>"+prodotto.getNome()+"<p>"+"<b>Prezzo:</b>"+prodotto.getPrezzo()+"<div>";
 				this.prodotti.setInnerHTML(this.prodotti.getInnerHTML()+item);
 		}
-		if(prodotti.size() != 0){
-		setProdottoSelezionato(index);
-		}
+		setProdottoSelezionato(prodottoselezionato);
 	}
 	
 	public  Element getprodotto(){
@@ -115,16 +100,17 @@ public class VIngredienteItem extends Composite implements IngredienteItemPresen
 	}
 
 	@Override
-	public void setProdottoSelezionato(int index) {
-		int indice = index;
+	public void setProdottoSelezionato(DProdottoDTO prodotto) {
 		
-		this.apriProdottibutton.setInnerHTML(this.ProdottiList.get(indice).getNome());
-		this.prezzo.setInnerHTML(this.ProdottiList.get(indice).getPrezzo()+"€");
+		this.apriProdottibutton.setInnerHTML(prodotto.getNome());
+		this.prezzo.setInnerHTML(prodotto.getPrezzo()+"€");
 		
-		AppUtils.EVENT_BUS.fireEvent(new AggiungiATotaleEvent(ProdottiList.get(indice)));
 	}
 
-	
+	@Override
+	public PaperCheckboxElement getEscludi(){
+		return this.escludi;
+	}
 
 
 

@@ -3,7 +3,7 @@ package marres.shared.dto;
 public class DProdottoDTO {
 	
 	
-	private DIngredienteDTO Ingrediente;
+	private DRicettaDTO Ricetta;
 	private  String Categorie;
 	private String Descrizione;
 	private String Id;
@@ -12,13 +12,13 @@ public class DProdottoDTO {
 	
 	public DProdottoDTO(){}
 	
-	public DProdottoDTO(String categorie,String descrizione, String id,String nome,String prezzo,DIngredienteDTO ingrediente){
+	public DProdottoDTO(String categorie,String descrizione, String id,String nome,String prezzo,DRicettaDTO Ricetta){
 		this.Categorie = categorie;
 		this.Descrizione=descrizione;
 		this.Id=id;
 		this.Nome=nome;
 		this.Prezzo= prezzo;
-		this.setIngrediente(ingrediente);
+		this.Ricetta = Ricetta;
 	}
 	
 	public String getCategorie() {
@@ -52,13 +52,17 @@ public class DProdottoDTO {
 		Prezzo = prezzo;
 	}
 
-	public DIngredienteDTO getIngrediente() {
-		return Ingrediente;
+	public DRicettaDTO getRicetta() {
+		return Ricetta;
 	}
 
-	public void setIngrediente(DIngredienteDTO ingrediente) {
-		Ingrediente = ingrediente;
+	public void setRicetta(DRicettaDTO ricetta) {
+		Ricetta = ricetta;
 	}
+
+
+	
+
 	  
 	
 	

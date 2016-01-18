@@ -3,8 +3,7 @@ package marres.client.Events.EventUp;
 import java.util.List;
 
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
-
+import marres.client.Presenter.MainPresenter;
 import marres.shared.dto.DProdottoDTO;
 import marres.shared.dto.DRicettaDTO;
 
@@ -18,6 +17,7 @@ public static Type<AggiungiRicettaCarrelloEventHandler> TYPE = new Type<Aggiungi
 	public AggiungiRicettaCarrelloEvent(DRicettaDTO ricetta,List<DProdottoDTO> prodotti) {
 		this.ricetta = ricetta;
 		this.prodotti = prodotti;
+		
 	}
 
 	@Override
@@ -40,4 +40,6 @@ public static Type<AggiungiRicettaCarrelloEventHandler> TYPE = new Type<Aggiungi
 	}
 
 	
+	
+
 }

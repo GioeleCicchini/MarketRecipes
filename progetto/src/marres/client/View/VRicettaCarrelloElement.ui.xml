@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	
 	
-	<div>
+	<div ui:field="ElementoNelCarrello">
 	 <style is='custom-style'>
 	 .RimuoviDalCarrello{
 		 background-color: rgba(229, 57, 53, 1);
@@ -31,14 +31,14 @@
 	
 	<table >
 		<tr>
-				<td class="border" align="left"><paper-button class="RimuoviDalCarrello">Rimuovi</paper-button></td>
+				<td class="border" align="left"><paper-button class="RimuoviDalCarrello" ui:field="RimuoviRicetta">Rimuovi</paper-button></td>
 				<td class="border" align="left">
 					<div class="inline">Quantità:</div>
-					<div class="inline">1</div>
+					<div class="inline" ui:field="quantita">1</div>
 				</td>
 				<td class="border" align="left">
-						<paper-button class="incrementa" >+1</paper-button>
-						<paper-button class="decrementa">-1</paper-button>
+						<paper-button class="incrementa" ui:field="incrementapiu" >+1</paper-button>
+						<paper-button class="decrementa" ui:field="incrementameno">-1</paper-button>
 				</td>
 				<td class="border" align="left" ui:field="nome"></td>
 				<td class="border" align="left"> 

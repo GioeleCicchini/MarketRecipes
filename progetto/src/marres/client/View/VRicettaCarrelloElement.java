@@ -30,6 +30,11 @@ public class VRicettaCarrelloElement extends Composite implements RicettaCarrell
 	 @UiField Element nome;
 	 @UiField Element costo;
 	 @UiField Element ProdottoItem;
+	 @UiField Element RimuoviRicetta;
+	 @UiField Element ElementoNelCarrello;
+	 @UiField Element quantita;
+	 @UiField Element incrementapiu;
+	 @UiField Element incrementameno;
 	 
 	interface VRicettaCarrelloElementUiBinder extends UiBinder<DivElement, VRicettaCarrelloElement> {
 	}
@@ -61,6 +66,34 @@ public class VRicettaCarrelloElement extends Composite implements RicettaCarrell
 		
 	}
 
+	@Override
+	public Element getEliminaRicettaButton() {
+		return RimuoviRicetta;
+	}
+
+	@Override
+	public void clear() {
+		this.ElementoNelCarrello.setInnerHTML("");
+		
+	}
+
+	public void incrementa(){
+		int quantita = Integer.valueOf(this.quantita.getInnerHTML());
+		quantita = quantita +1 ;
+		this.quantita.setInnerHTML(String.valueOf(quantita));
+	}
+	public int decrementa(){
+		int quantita = Integer.valueOf(this.quantita.getInnerHTML());
+		quantita = quantita -1;
+		this.quantita.setInnerHTML(String.valueOf(quantita));
+		return quantita;
+	}
 	
+	public Element getIncrementaPiu(){
+		return incrementapiu;
+	}
+	public Element getIncrementaMeno(){
+		return incrementameno;
+	}
 
 }

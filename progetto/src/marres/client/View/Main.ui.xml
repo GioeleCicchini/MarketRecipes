@@ -11,7 +11,7 @@
                 overflow: hidden;
             }
             .toolbar {
-                background: #689F38 !important;
+                background: #E65100; !important;
             }
             .header {
                 font-size: 200%;
@@ -42,8 +42,8 @@
               font-weight: bold;
             }
             .carrellodialog{
-            	width:60%;
-
+            	width:65%;
+			 background-color: #FFE0B2;
 				margin:0px;
 				position: fixed;
 		        top: 50px;
@@ -72,6 +72,9 @@
          .titolopadding{
          padding-right:150px;
          }
+         .messagecarrello{
+         font-size:35px;
+         }
         </style>
         <paper-drawer-panel ui:field="drawerPanel">
             <div drawer="">
@@ -95,6 +98,7 @@
                 <paper-fab ui:field="ApriCarrello" icon="shopping-cart" title="Carrello" class="add"/>
             </div>
         </paper-drawer-panel>
+        <paper-toast ui:field="toast1"><div class="messagecarrello">Ricetta Aggiunta al carrello</div></paper-toast>	
         <paper-dialog ui:field="Carrello" entry-animation="fade-in-animation" class="carrellodialog main" modal="">
    							
     						
@@ -143,6 +147,9 @@
 									</tr>
 							  	</table>
  		 </paper-dialog>
+ 		 
+ 		
+ 		 
     </g:HTMLPanel>
 </ui:UiBinder>
 

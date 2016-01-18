@@ -4,10 +4,19 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.vaadin.polymer.elemental.Element;
 import com.vaadin.polymer.iron.element.IronImageElement;
 import com.vaadin.polymer.paper.element.PaperDialogElement;
+import com.vaadin.polymer.paper.element.PaperToastElement;
+import com.google.gwt.query.client.GQuery;
+import com.google.gwt.query.client.Function;
+import com.google.gwt.query.client.Selector;
+import com.google.gwt.query.client.Selectors;
+import static com.google.gwt.query.client.GQuery.*;
+import static com.google.gwt.query.client.css.CSS.*;
 
 import marres.client.Presenter.RicettaPresenter;
 
@@ -15,7 +24,8 @@ import marres.client.Presenter.RicettaPresenter;
 public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	RicettaPresenter presenter;
-	
+
+
 	
 	  @UiField Element titolo;
 	  @UiField Element difficolta;
@@ -30,7 +40,7 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 	  @UiField Element IngredientiTable;
 	  @UiField Element totale;
 	  @UiField Element AggiungiACarrello;
-	  
+	 
 	  
 	 private final DivElement element;
 	 
@@ -64,6 +74,7 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	@Override
 	public void setRicetta(String titolo, String difficolta, String preparazione,String cottura,String dosi , String costo, String immagine) {
+	
 		this.titolo.setInnerHTML(titolo);
 		this.difficolta.setInnerHTML(difficolta);
 		this.preparazione.setInnerHTML(preparazione);
@@ -89,6 +100,7 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	@Override
 	public Element getApriRicetta() {
+
 		return RicettaCard;
 	}
 
@@ -115,6 +127,7 @@ public class VRicetta extends Composite implements RicettaPresenter.Display{
 
 	@Override
 	public Element getAggiungiACarrelloButton() {
+
 		return this.AggiungiACarrello;
 	}
 

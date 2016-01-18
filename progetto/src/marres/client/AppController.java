@@ -41,8 +41,8 @@ import marres.shared.dto.DRicettaDTO;
 
 public class AppController {
 	
-	private List<DProdottoDTO> ProdottiCarrello = new ArrayList<DProdottoDTO>();
 	
+	MainPresenter mainpresenter;
 	 
 	public AppController(){
 		
@@ -53,7 +53,7 @@ public class AppController {
 	
 	// inizializzazione Applicazione	
 		 Main main = new Main();
-		 MainPresenter mainpresenter = new MainPresenter(main);
+		 mainpresenter = new MainPresenter(main);
 		 RegistraEventi();
 		 mainpresenter.go(panel);
 		 
@@ -87,12 +87,9 @@ public class AppController {
 				
 				VRicettaCarrelloElement Vricetta = new VRicettaCarrelloElement();
 				RicettaCarrelloPresenter ricettapresenter = new RicettaCarrelloPresenter(Vricetta);
-				
 				ricettapresenter.setRicetta(event.getRicetta(),event.getProdotti());
-				
-				
 				DivElement ricettaDiv= Vricetta.getDivElement();
-				AppUtils.EVENT_BUS.fireEvent(new DisplayRicettaCarrelloEvent(ricettaDiv));
+				mainpresenter.DisplayRicettaCarrello(ricettaDiv);
 				
 			}
 			
@@ -119,18 +116,21 @@ public class AppController {
 			public void OnAggiungiIngrediente(AggiungiIngredienteEvent event) {
 			
 				
-				DIngredienteDTO Ingrediente = event.getIngrediente();
-				List<DProdottoDTO> prodotti = event.getProdotti();
-				DProdottoDTO prodottoselezionato = event.getProdottoSelezionato();
-				VIngredienteItem Vingrediente = new VIngredienteItem();
 				
+				
+				DIngredienteDTO Ingrediente = event.getIngrediente();
+				VIngredienteItem Vingrediente = new VIngredienteItem();
 				IngredienteItemPresenter ingredientepresenter = new IngredienteItemPresenter(Vingrediente);
 				
+				
 				ingredientepresenter.setIngredienteItem(Ingrediente);
-				ingredientepresenter.setProdotti(prodotti,prodottoselezionato);
+				ingredientepresenter.setRicetta(event.getPresenter().getRicetta());
+				
+				ingredientepresenter.getProdotti();
 			
 				DivElement ingredienteDiv = Vingrediente.getDivElement();
-				AppUtils.EVENT_BUS.fireEvent(new DisplayIngredienteEvent(ingredienteDiv));
+				event.getPresenter().DisplayIngrediente(ingredienteDiv);
+				
 				
 			}
 			
@@ -140,13 +140,6 @@ public class AppController {
 		
 	}
 	
-	public float getTotaleCarrello(){
-		float totale =0 ;
-		for(DProdottoDTO prodotto : ProdottiCarrello){
-			totale = totale + Float.parseFloat(prodotto.getPrezzo());
-		}
-		return totale;
-	}
 
 
 	

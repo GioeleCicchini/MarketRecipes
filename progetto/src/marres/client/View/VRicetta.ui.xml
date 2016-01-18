@@ -80,6 +80,7 @@
 		margin-top:50px;
 		}
 		.dialog{
+		 background-color: #FFE0B2;
 		width:80%;
 		height:85%;
 		margin:0px;
@@ -87,17 +88,20 @@
         top: 50px;
 		}
 		.AggiungiAlCarrello{
-		 background-color: rgba(229, 57, 53, 1);
+		 background-color: #FF9800;
 		 color:white;
 		
 		}
 		.TitoloRicettaDettagli{
 		margin:0;
-		padding:0px;
+		padding-left:0px;
+		padding-right:0px;
+		padding-top:5px;
+		padding-bottom:5px;
 		width:100%;
 		height:50px;
-		background-color:rgba(229, 57, 53, 1);
-		color:white;
+		background-color:#FFCC80;
+		color:black;
 		font-size:30px;
 		}
 		.titolocenter{
@@ -106,7 +110,7 @@
 		}
 
         </style>
-		        <paper-card class="papercard" image="" ui:field="RicettaCard">          
+		        <paper-card class="papercard" image="" ui:field="RicettaCard" >          
 				            <iron-image sizing="cover" class="image" ui:field="immagine">
 				            	
 				            </iron-image>
@@ -151,8 +155,20 @@
 						
 				           
 				            	<div class="TitoloRicettaDettagli" >
-				            		<div class="titolocenter">Risotto al vapore</div>
+				            
+				            			<div>
+							<table class="dettagliTable">
+								<tr>
+								<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello" ui:field="AggiungiACarrello">Aggiungi A Carrello</paper-button></td>
+								<td class="dettagliTableTD">Alici marinate</td>
+								<td class="dettagliTableTD">Totale:</td>
+								<td class="dettagliTableTD" ui:field="totale"></td>
+								</tr>
+							
+							</table>
+						</div>
 				            	 </div>
+				            		
 				           
 				         <div>
 				         	<table class="dettagliTable">
@@ -164,36 +180,13 @@
 								</tr>
 				         	</table>
 				         </div>   
+				        
 						<div ui:field="IngredientiTable"></div>
+	
 						
-						
-						<div>
-							<table class="dettagliTable">
-							
-								<tr class="totale">
-								<td></td>
-								<td></td>
-								<td></td>
-								<td class="dettagliTableTD">Totale</td>
-								</tr>
-								
-								<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td class="dettagliTableTD" ui:field="totale"></td>
-								</tr>
-								
-								<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td class="dettagliTableTD"><paper-button class="AggiungiAlCarrello" ui:field="AggiungiACarrello">Aggiungi A Carrello</paper-button></td>
-								</tr>
-							
-							</table>
-						</div>
+				
                 </paper-dialog>
           		
+          	 
       </div>
     </ui:UiBinder>

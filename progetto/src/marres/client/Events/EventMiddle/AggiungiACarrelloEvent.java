@@ -15,11 +15,12 @@ public class AggiungiACarrelloEvent extends GwtEvent<AggiungiACarrelloEventHandl
 	
 	private DRicettaDTO ricetta;
 	private List<DProdottoDTO> prodotti;
-	
+	private int posizione;
 
-	public AggiungiACarrelloEvent(DRicettaDTO ricetta,List<DProdottoDTO> prodotti){
+	public AggiungiACarrelloEvent(DRicettaDTO ricetta,List<DProdottoDTO> prodotti,int posizione){
 		this.ricetta=ricetta;
 		this.prodotti=prodotti;
+		this.posizione = posizione;
 	}
 	
 	@Override
@@ -40,6 +41,9 @@ public class AggiungiACarrelloEvent extends GwtEvent<AggiungiACarrelloEventHandl
 
 	public List<DProdottoDTO> getProdotti() {
 		return prodotti;
+	}
+	public int getPosizione(){
+		return this.posizione;
 	}
 
 

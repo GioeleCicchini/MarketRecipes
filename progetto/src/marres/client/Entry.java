@@ -37,7 +37,7 @@ public class Entry implements EntryPoint {
 	                PaperItemElement.SRC,
 	                IronSelectorElement.SRC,
 	                IronCollapseElement.SRC,
-	                PaperDialogScrollableElement.SRC
+	                PaperToastElement.SRC
 	   
 
         ), new Function() {

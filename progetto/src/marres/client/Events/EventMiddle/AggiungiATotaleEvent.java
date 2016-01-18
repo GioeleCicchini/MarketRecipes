@@ -11,9 +11,10 @@ public class AggiungiATotaleEvent extends GwtEvent<AggiungiATotaleEventHandler> 
 public static Type<AggiungiATotaleEventHandler> TYPE = new Type<AggiungiATotaleEventHandler>();
 	
 	private DProdottoDTO prodotto;		
-	
-	public AggiungiATotaleEvent(DProdottoDTO prodotto) {
+	private DProdottoDTO prodottoprecedente;		
+	public AggiungiATotaleEvent(DProdottoDTO prodotto,DProdottoDTO prodottoprecedente) {
 		this.prodotto = prodotto;
+		this.prodottoprecedente=prodottoprecedente;
 	}
 
 	@Override
@@ -31,4 +32,7 @@ public static Type<AggiungiATotaleEventHandler> TYPE = new Type<AggiungiATotaleE
 		return this.prodotto;
 	}
 
+	public DProdottoDTO getProdottoPrecedente(){
+		return this.prodottoprecedente;
+	}
 }

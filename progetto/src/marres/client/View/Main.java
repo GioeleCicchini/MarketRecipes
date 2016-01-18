@@ -31,7 +31,8 @@ public class Main extends Composite implements Display {
   @UiField DateTimeBox data;
   @UiField Element chiudiCarrello;
   @UiField Element totaleCarrello;
-
+  @UiField PaperToastElement toast1;
+  
   public static PickerPosition picker;
   
   public Main() {
@@ -91,11 +92,23 @@ public void ChiudiCarrello(){
 	Carrello.close();
 }
 
+@Override
+public void DisplayMessageCarrello(){
+	this.toast1.show();
+}
+
 
 @Override
 public void AggiornaTotaleCarrello(float totale) {
 	this.totaleCarrello .setInnerHTML("Totale: "+String.valueOf((float) (Math.floor(totale * 100) / 100))+"€");
 	
+}
+
+
+@Override
+public MainPresenter getPresenter() {
+
+	return this.presenter;
 }
 
 

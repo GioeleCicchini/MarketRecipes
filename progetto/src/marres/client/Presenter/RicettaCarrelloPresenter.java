@@ -4,8 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
-
+import com.vaadin.polymer.elemental.Element;
+import com.vaadin.polymer.elemental.EventListener;
+import com.vaadin.polymer.elemental.Event;
+import marres.client.AppUtils;
+import marres.client.Events.EventDown.DisplayRicettaEvent;
+import marres.client.Events.EventMiddle.AggiungiACarrelloEvent;
+import marres.client.Events.EventMiddle.RimuoviDaCarrelloEvent;
+import marres.client.Events.EventUp.AggiungiRicettaCarrelloEvent;
 import marres.shared.dto.DProdottoDTO;
 import marres.shared.dto.DRicettaDTO;
 
@@ -15,7 +23,6 @@ public class RicettaCarrelloPresenter implements Presenter {
 	
 	
 	private Display view;
-
 	private DRicettaDTO ricetta;
 	private List<DProdottoDTO> prodotti = new ArrayList<DProdottoDTO>();
 	
@@ -24,13 +31,19 @@ public class RicettaCarrelloPresenter implements Presenter {
 		public void setPresenter(RicettaCarrelloPresenter presenter);
 		public Widget asWidget();
 		public void setRicetta(String nome,String costo,List<DProdottoDTO> Prodottoitem);
+		public Element getEliminaRicettaButton();
+		public void clear();
+		public Element getIncrementaPiu();
+		public Element getIncrementaMeno();
+		public void incrementa();
+		public int decrementa();
 	}
 	
 
 	public RicettaCarrelloPresenter(Display view){
-		this.view = view;
-		InizializzaEventiView();	
+		this.view = view;	
 		bind();
+		InizializzaEventiView();
 		
 	}
 	
@@ -47,10 +60,12 @@ public class RicettaCarrelloPresenter implements Presenter {
 	
 	public void setRicetta(DRicettaDTO ricetta,List<DProdottoDTO> prodotti){
 		this.ricetta = ricetta;
-		this.prodotti = prodotti;
-	
 		float somma=0;
 		
+		for(DProdottoDTO prodotto : prodotti){			
+			this.prodotti.add(prodotto);
+		}
+	
 		for(DProdottoDTO prodotto : prodotti){
 			somma=somma+Float.parseFloat(prodotto.getPrezzo());
 			
@@ -64,7 +79,43 @@ public class RicettaCarrelloPresenter implements Presenter {
 
 	@Override
 	public void InizializzaEventiView() {
-		// TODO Auto-generated method stub
+		
+		this.view.getEliminaRicettaButton().addEventListener("click", new EventListener(){
+
+			@Override
+			public void handleEvent(Event event) {
+				view.clear();	
+				AppUtils.EVENT_BUS.fireEvent(new RimuoviDaCarrelloEvent(ricetta,prodotti));
+			}
+
+			
+		});
+		
+		this.view.getIncrementaPiu().addEventListener("click", new EventListener(){
+
+			@Override
+			public void handleEvent(Event event) {
+				view.incrementa();
+				AppUtils.EVENT_BUS.fireEvent(new AggiungiACarrelloEvent(ricetta,prodotti,1));
+			}
+		});
+		
+		this.view.getIncrementaMeno().addEventListener("click", new EventListener(){
+
+			@Override
+			public void handleEvent(Event event) {
+				int quantita = view.decrementa();
+				if(quantita >= 1){
+				AppUtils.EVENT_BUS.fireEvent(new RimuoviDaCarrelloEvent(ricetta,prodotti));
+				}
+				if(quantita == 0){
+					view.clear();	
+					AppUtils.EVENT_BUS.fireEvent(new RimuoviDaCarrelloEvent(ricetta,prodotti));
+				}
+				
+			}
+		});
+		
 		
 	}
 

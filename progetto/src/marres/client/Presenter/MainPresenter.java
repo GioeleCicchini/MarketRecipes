@@ -24,6 +24,8 @@ import marres.client.Events.EventMiddle.AggiungiACarrelloEvent;
 import marres.client.Events.EventMiddle.AggiungiACarrelloEventHandler;
 import marres.client.Events.EventMiddle.CambiaCategoriaEvent;
 import marres.client.Events.EventMiddle.CambiaCategoriaEventHandler;
+import marres.client.Events.EventMiddle.RimuoviDaCarrelloEvent;
+import marres.client.Events.EventMiddle.RimuoviDaCarrelloEventHandler;
 import marres.client.Events.EventUp.AggiungiCategoriaEvent;
 import marres.client.Events.EventUp.AggiungiRicettaCarrelloEvent;
 import marres.client.Events.EventUp.AggiungiRicettaEvent;
@@ -43,7 +45,9 @@ public class MainPresenter implements Presenter {
 	private List<DProdottoDTO> ProdottiCarrello = new ArrayList<DProdottoDTO>();
 	
 	private Display view;
+	
 
+	
 	
 	public interface Display {
 		public void AggiungiContenutiPrincipali(DivElement ricetta);
@@ -52,12 +56,14 @@ public class MainPresenter implements Presenter {
 		public void EliminaContenutiPrincipali();
 		public void EliminaContenutiMenu();
 		public void setPresenter(MainPresenter presenter);
+		public MainPresenter getPresenter();
 		public PaperFabElement getApriCarrello();
 		public Element getChiudiCarrello();
 		public void ApriCarrello();
 		public void ChiudiCarrello();
 		public Widget asWidget();
 		public void AggiornaTotaleCarrello(float totale);
+		public void DisplayMessageCarrello();
 	}
 	
 	public MainPresenter(Display view){
@@ -93,17 +99,27 @@ public class MainPresenter implements Presenter {
 			
 		});
 		
+		AppUtils.EVENT_BUS.addHandler(RimuoviDaCarrelloEvent.TYPE, new RimuoviDaCarrelloEventHandler(){
+
+			@Override
+			public void OnRimuoviDaCarrello(RimuoviDaCarrelloEvent event) {
+				
+			List<DProdottoDTO> prodotti= event.getProdotti();
+			for(DProdottoDTO prodotto : prodotti){	
+						ProdottiCarrello.remove(ProdottiCarrello.indexOf(prodotto));
+			}
+			
+				float somma = aggiornaTotale();
+				view.AggiornaTotaleCarrello(somma);
+			}
+	
+			
+		});
+		
 		AppUtils.EVENT_BUS.addHandler(DisplayRicettaEvent.TYPE, new DisplayRicettaEventHandler(){
 			@Override
 			public void OnDisplayRicetta(DisplayRicettaEvent event) {
 				view.AggiungiContenutiPrincipali(event.getElement());
-			}
-		});
-		
-		AppUtils.EVENT_BUS.addHandler(DisplayRicettaCarrelloEvent.TYPE, new DisplayRicettaCarrelloEventHandler(){
-			@Override
-			public void OnDisplayRicettaCarrello(DisplayRicettaCarrelloEvent event) {
-				view.AggiungiACarrello(event.getElement());
 			}
 		});
 		
@@ -131,13 +147,14 @@ public class MainPresenter implements Presenter {
 					ProdottiCarrello.add(prodotto);
 				}
 				
-				float somma=0;
-				for(DProdottoDTO prodotto : ProdottiCarrello){
-					somma=somma+Float.parseFloat(prodotto.getPrezzo());
-				}
+				
+				float somma = aggiornaTotale();
 				view.AggiornaTotaleCarrello(somma);
 				
+				if(event.getPosizione()==0){
+				view.DisplayMessageCarrello();
 				AppUtils.EVENT_BUS.fireEvent(new AggiungiRicettaCarrelloEvent(event.getRicetta(),event.getProdotti()));
+				}
 				
 				
 			}
@@ -146,6 +163,20 @@ public class MainPresenter implements Presenter {
 		});
 		
 	}
+	
+	public void DisplayRicettaCarrello(DivElement elemento){
+		view.AggiungiACarrello(elemento);
+	}
+	
+	
+	public float aggiornaTotale(){
+		float somma=0;
+		for(DProdottoDTO prodotto : ProdottiCarrello){
+			somma=somma+Float.parseFloat(prodotto.getPrezzo());
+		}
+	
+		return somma;
+	} 
 	
 	@Override
 	public void bind() {
@@ -208,6 +239,7 @@ public class MainPresenter implements Presenter {
 	public void AggiungiCategoria (DCategoriaDTO categoria){
 		AppUtils.EVENT_BUS.fireEvent(new AggiungiCategoriaEvent(categoria));
 	}
+	
 
 	
 }
